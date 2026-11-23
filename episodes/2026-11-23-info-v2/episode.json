@@ -1,0 +1,87 @@
+{
+  "type": "info",
+  "date": "23 NOV. 2026",
+  "title": "Oligui Nguema et ExxonMobil, maisons démolies, racket routier, poulet importé, Panthères : les 5 infos du jour en simple",
+  "voice": "fr-FR-HenriNeural",
+  "rate": "+5%",
+  "voice_ref": "assets/voix/stephane_se.json",
+  "scenes": [
+    {
+      "kind": "hook",
+      "image": "https://images.unsplash.com/photo-1674212943761-167b76c22c13?w=1400&q=80",
+      "kicker": "L'INFO DU JOUR",
+      "headline": "5 INFOS\nEN SIMPLE",
+      "voice": "Cinq infos chaudes aujourd'hui au Gabon. On t'explique en simple."
+    },
+    {
+      "kind": "brief",
+      "image": "https://images.unsplash.com/photo-1690508313456-bf8c851e8319?w=1400&q=80",
+      "kicker": "1 · CHEF DE L'ÉTAT",
+      "headline": "PÉTROLE :\nEXXONMOBIL REÇU",
+      "problem": "Le pétrole rapporte, mais pas toujours aux Gabonais",
+      "clear": "Le président veut un contrat négocié vite et avec rigueur",
+      "voice": "Première info, le chef de l'État. Vendredi, Brice Clotaire Oligui Nguema a reçu le géant américain ExxonMobil, qui veut chercher du pétrole très loin en mer. Le problème : le pétrole rapporte, mais pas toujours aux Gabonais. En clair : le président demande au ministre du Pétrole de négocier vite et avec rigueur, pour un contrat dans les prochains mois."
+    },
+    {
+      "kind": "brief",
+      "image": "https://images.unsplash.com/photo-1582490772231-20eb7d216852?w=1400&q=80",
+      "kicker": "2 · DÉGUERPISSEMENTS",
+      "headline": "MAISONS DÉMOLIES :\nQUI EST PAYÉ ?",
+      "problem": "Des familles perdent leur maison pour les nouvelles routes",
+      "clear": "395 personnes sur 424 payées. 19 attendent encore",
+      "voice": "Deuxième info : les démolitions pour les nouvelles routes de Libreville. Le problème : des familles perdent leur maison, et certaines trouvent l'indemnisation trop faible. En clair : le gouvernement dit avoir payé 395 personnes sur 424, pour plus de 7 milliards de francs CFA. Et le président a ajouté 4 milliards."
+    },
+    {
+      "kind": "brief",
+      "image": "https://images.unsplash.com/photo-1781523214481-d4a6f6395f9f?w=1400&q=80",
+      "kicker": "3 · SÉCURITÉ",
+      "headline": "RACKET ROUTIER :\nTOLÉRANCE ZÉRO",
+      "problem": "Faux contrôles et billets glissés dans les papiers",
+      "clear": "Le ministre promet des sanctions. Toi, ne paie pas",
+      "voice": "Troisième info. Le ministre de l'Intérieur, Edgard Moukoumbi, déclare la tolérance zéro contre le racket sur les routes. Le problème : faux contrôles, billets glissés dans les papiers… tout le monde connaît. En clair : il promet des sanctions contre les policiers fautifs. Mais pour casser le racket, il faut aussi arrêter de payer."
+    },
+    {
+      "kind": "brief",
+      "image": "https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?w=1400&q=80",
+      "kicker": "4 · TON ASSIETTE",
+      "headline": "POULET IMPORTÉ :\nBIENTÔT INTERDIT ?",
+      "problem": "On importe presque tout notre poulet",
+      "clear": "Interdiction prévue au 1er janvier 2027, mais contestée par les États-Unis",
+      "voice": "Quatrième info, dans ton assiette. Le poulet importé doit être interdit au 1er janvier 2027. Le problème : on importe presque tout notre poulet, et on en produit très peu. En clair : l'État aide les fermes locales. Mais les États-Unis contestent cette interdiction, et les règles pourraient encore changer."
+    },
+    {
+      "kind": "brief",
+      "image": "https://images.unsplash.com/photo-1705593973313-75de7bf95b56?w=1400&q=80",
+      "kicker": "5 · SPORT",
+      "headline": "PANTHÈRES :\n87e MONDIALES",
+      "problem": "Défaite 2-1 face au Lesotho",
+      "clear": "Le Gabon perd 2 places. La CAN 2027 reste jouable",
+      "voice": "Cinquième info, le foot. Les Panthères reculent de deux places au classement FIFA : quatre-vingt-septièmes mondiales. Le problème : la défaite 2 à 1 contre le Lesotho. En clair : la qualification pour la CAN 2027 reste possible, mais il faudra gagner les prochains matchs."
+    },
+    {
+      "kind": "civic",
+      "image": "https://images.unsplash.com/photo-1674212943761-167b76c22c13?w=1400&q=80",
+      "kicker": "LE RÉFLEXE CITOYEN",
+      "headline": "PAS UN\nFRANC AU\nRACKET.",
+      "question": "On te réclame de l'argent ? Note le lieu et l'heure",
+      "voice": "Le réflexe citoyen du jour : sur la route, ne paie jamais un racket. Si on te réclame de l'argent sans raison, note le lieu et l'heure."
+    },
+    {
+      "kind": "cta",
+      "image": "https://images.unsplash.com/photo-1674212943761-167b76c22c13?w=1400&q=80",
+      "kicker": "ABONNE-TOI",
+      "headline": "@241degres",
+      "sub": "Ton avis en commentaire !",
+      "voice": "Abonne-toi pour recevoir nos capsules d'informations chaque jour ! Et dis-nous en commentaire ce que tu penses de ces actualités."
+    }
+  ],
+  "sources": [
+    "ExxonMobil : https://gabonmediatime.com/hydrocarbures-exxonmobil-passe-a-loffensive-dans-loffshore-ultra-profond-gabonais/ | https://gabonactu.com/blog/2026/11/21/petrole-exxonmobil-poursuit-ses-operations-dexploration-en-mer-profonde-au-gabon",
+    "Indemnisations : https://www.union.sonapresse.com/fr/amenagement-routier-plus-de-7-milliards-de-fcfa-pour-les-familles-impactees | https://www.gabonreview.com/deguerpissements-a-libreville-4-milliards-supplementaires-pour-indemniser-les-familles/",
+    "Racket routier : https://www.union.sonapresse.com/fr/rackets-routiers-responsabilites-partagees | https://www.gabonreview.com/police-nationale-edgard-moukoumbi-decrete-la-tolerance-zero-contre-le-racket-et-les-derives-policieres/",
+    "Poulet importé : https://www.union.sonapresse.com/fr/plf-2027-les-priorites-du-gouvernement-malgre-la-rigueur | https://gabonmediatime.com/gabon-le-gouvernement-contraint-de-revoir-linterdiction-dimporter-du-poulet-de-chair/",
+    "Classement FIFA : https://gabonmediatime.com/class-fifa-le-gabon-87e-mondial-avec-2-places-perdues-en-novembre/ | https://www.union.sonapresse.com/fr/classement-fifa-de-novembre-le-gabon-recule-de-deux-places"
+  ],
+  "credits": "Photos : Unsplash (burak cesur, Gabriel Xavier, Francisco Andreotti, Red Shuheart, Ben Moreland, Igor Batista)",
+  "hashtags": "#Gabon #Libreville #241degres #ActuGabon #OliguiNguema #Panthères #Civisme"
+}

@@ -1,0 +1,11 @@
+episodes/*/img/
+episodes/*/audio/
+episodes/*/scenes/
+episodes/*/out/*.mp4
+episodes/*/out/*.jpg
+__pycache__/
+assets/fonts/*.ttf
+assets/logo/*.png
+assets/logo/src/
+assets/voix/
+docs/*.mp3

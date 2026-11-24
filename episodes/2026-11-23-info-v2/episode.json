@@ -1,7 +1,7 @@
 {
   "type": "info",
   "date": "23 NOV. 2026",
-  "title": "Oligui Nguema et ExxonMobil, maisons démolies, racket routier, poulet importé, Panthères : les 5 infos du jour en simple",
+  "title": "Oligui Nguema et ExxonMobil, maisons démolies, racket routier, poulet importé, Panthères : les infos du jour",
   "voice": "fr-FR-HenriNeural",
   "rate": "+5%",
   "voice_ref": "assets/voix/stephane_se.json",
@@ -10,8 +10,8 @@
       "kind": "hook",
       "image": "https://images.unsplash.com/photo-1674212943761-167b76c22c13?w=1400&q=80",
       "kicker": "L'INFO DU JOUR",
-      "headline": "5 INFOS\nEN SIMPLE",
-      "voice": "Cinq infos chaudes aujourd'hui au Gabon. On t'explique en simple."
+      "headline": "LES INFOS\nDU JOUR",
+      "voice": "Les infos du jour au Gabon. On t'explique."
     },
     {
       "kind": "brief",

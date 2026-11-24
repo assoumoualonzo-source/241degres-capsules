@@ -9,7 +9,7 @@ Le Gabonais moyen, pas un spécialiste. Si un élève de 3e ne comprend pas une 
 
 ## Capsule INFO — structure
 1. **hook** : étiquette « ACTU GABON », titre à l'écran « LES INFOS DU JOUR », voix : « Les infos du jour au Gabon. On t'explique. » (jamais « 5 infos chaudes » ni « en simple »).
-2. **5 scènes brief**, une par info : titre + carte CE QUI COINCE (rouge) + carte EN CLAIR (vert).
+2. **5 scènes brief**, une par info : titre + carte POURQUOI ÇA COMPTE (rouge) + carte CONCRÈTEMENT (vert). La voix raconte naturellement avec « Pourquoi ça compte ? Parce que… » puis « Concrètement, … ».
    - **Info n°1 obligatoire : le chef de l'État** (activités, décisions, audiences, déplacements du président de la République). Ton factuel et neutre : ce qu'il a fait ou décidé, ce que ça change pour les gens. Pas d'éloge ni de critique de notre part.
    - Infos 2 à 5 : les plus « chaudes » des dernières 24 à 48 h (celles dont tout le monde parle, qui touchent le quotidien).
 3. **civic** : un réflexe citoyen concret, lié à une des infos.

@@ -326,7 +326,7 @@ class Scene:
             self.stat = text_layer(sc["stat"], ANTON(ss), YELLOW, maxw=980)
             self.stat_lbl = text_layer(sc["stat_label"], MONT(40, "SemiBold"), WHITE, maxw=880)
         if k == "brief":
-            self.p = card("LE PROBLÈME", sc["problem"], RED)
+            self.p = card("CE QUI COINCE", sc["problem"], RED)
             self.c = card("EN CLAIR", sc["clear"], GREEN)
         if k == "rank":
             self.rank = text_layer(str(sc["rank"]), ANTON(280), YELLOW, maxw=900)

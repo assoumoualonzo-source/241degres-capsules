@@ -18,7 +18,7 @@
 | kind | champs | usage |
 |---|---|---|
 | hook | kicker, headline | accroche, 2 lignes max |
-| brief | kicker, headline, problem, clear, cover | une info : titre + LE PROBLÈME + EN CLAIR (format INFO quotidien) |
+| brief | kicker, headline, problem, clear, cover | une info : titre + CE QUI COINCE + EN CLAIR (format INFO quotidien) |
 | story | kicker, headline, stat, stat_label | une actu + un chiffre |
 | split | kicker, left_title, left, right_title, right | pour vous / pour l'État |
 | alert | kicker, headline, bullets[3] (les 2 premières = interdits, la dernière = action) | arnaque, sécurité |

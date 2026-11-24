@@ -1,0 +1,92 @@
+{
+  "type": "info",
+  "date": "24 NOV. 2026",
+  "title": "Oligui Nguema et la police, pharmacies d'hôpital, droit de grève, Fitch, convois sur la RN1 : les infos du jour",
+  "voice": "fr-FR-HenriNeural",
+  "rate": "+5%",
+  "voice_ref": "assets/voix/stephane_se.json",
+  "scenes": [
+    {
+      "kind": "hook",
+      "image": "https://images.unsplash.com/photo-1674212943761-167b76c22c13?w=1400&q=80",
+      "kicker": "ACTU GABON",
+      "headline": "LES INFOS\nDU JOUR",
+      "voice": "Les infos du jour au Gabon. On t'explique."
+    },
+    {
+      "kind": "brief",
+      "image": "https://images.unsplash.com/photo-1617036543800-4d5c66cd39af?w=1400&q=80",
+      "kicker": "1 · CHEF DE L'ÉTAT",
+      "headline": "POLICE :\n95 VÉHICULES",
+      "problem": "Contre le grand banditisme, la police doit bouger vite",
+      "clear": "Les véhicules vont au Grand Libreville et à l'intérieur",
+      "voice": "Première info, le chef de l'État. À Owendo, Brice Clotaire Oligui Nguema a remis 95 véhicules à la Police nationale, et des parachutes à l'armée. Le problème : contre le grand banditisme, la police doit pouvoir bouger vite. En clair : ces véhicules vont aux unités du Grand Libreville et de l'intérieur du pays.",
+      "cover": "95 VÉHICULES POUR LA POLICE"
+    },
+    {
+      "kind": "brief",
+      "image": "https://images.unsplash.com/photo-1580281658460-2d1114999983?w=1400&q=80",
+      "kicker": "2 · TA SANTÉ",
+      "headline": "PHARMACIES\nD'HÔPITAL",
+      "problem": "On t'envoie acheter dehors les médicaments de l'hôpital",
+      "clear": "Date limite : 15 décembre pour réorganiser les pharmacies",
+      "voice": "Deuxième info, ta santé. Le gouvernement fixe une date limite : le mardi 15 décembre. Le problème : à l'hôpital public, on t'envoie souvent acheter dehors les médicaments. En clair : d'ici là, les pharmacies des hôpitaux doivent être réorganisées. Objectif : que l'hôpital fournisse lui-même les médicaments qu'il doit te donner.",
+      "cover": "HÔPITAL : MÉDICAMENTS SUR PLACE"
+    },
+    {
+      "kind": "brief",
+      "image": "https://images.unsplash.com/photo-1776294285771-58216da8b3c2?w=1400&q=80",
+      "kicker": "3 · TRAVAIL",
+      "headline": "DROIT DE GRÈVE :\nLA LOI QUI FÂCHE",
+      "problem": "Des syndicats parlent d'une guerre contre les travailleurs",
+      "clear": "Le ministère assure : la grève reste un droit. On discute",
+      "voice": "Troisième info, le travail. Le gouvernement prépare une loi sur le droit de grève, avec un service minimum et dix jours de grève au maximum par an. Le problème : des syndicats parlent d'une déclaration de guerre contre les travailleurs. En clair : le ministère assure que la grève reste un droit, et se dit ouvert aux propositions.",
+      "cover": "GRÈVE : LA LOI QUI FÂCHE"
+    },
+    {
+      "kind": "brief",
+      "image": "https://images.unsplash.com/photo-1637137092274-83a1f9ea5165?w=1400&q=80",
+      "kicker": "4 · L'ARGENT DU PAYS",
+      "headline": "FITCH :\nNOTE TRÈS BASSE",
+      "problem": "Beaucoup de dettes, et trop de dépendance au pétrole",
+      "clear": "Le gouvernement conteste et défend ses efforts",
+      "voice": "Quatrième info, l'argent du pays. L'agence Fitch note les pays comme on note les élèves. Elle laisse la note du Gabon très basse. Le problème : le pays a beaucoup de dettes et dépend trop du pétrole. En clair : le gouvernement conteste. Il dit que ses efforts pour remettre les comptes en ordre ne sont pas assez vus.",
+      "cover": "FITCH : LA NOTE RESTE BASSE"
+    },
+    {
+      "kind": "brief",
+      "image": "https://images.unsplash.com/photo-1594957907749-f835921e6e9f?w=1400&q=80",
+      "kicker": "5 · SUR LA ROUTE",
+      "headline": "CONVOIS MILITAIRES\nSUR LA RN1",
+      "problem": "Gros convois entre Libreville et Lambaréné",
+      "clear": "Retour à partir du 30 novembre. Sois prudent au volant",
+      "voice": "Cinquième info, sur la route. Le Gabon, la Côte d'Ivoire et la France font un exercice militaire vers Lambaréné. Le problème : de gros convois roulent sur la R N 1, entre Libreville et Lambaréné. En clair : le retour est prévu à partir du 30 novembre. Sois prudent au volant, et évite les attroupements au bord de la route.",
+      "cover": "CONVOIS MILITAIRES SUR LA RN1"
+    },
+    {
+      "kind": "civic",
+      "image": "https://images.unsplash.com/photo-1674212943761-167b76c22c13?w=1400&q=80",
+      "kicker": "LE RÉFLEXE CITOYEN",
+      "headline": "DEMANDE\nD'ABORD À\nL'HÔPITAL.",
+      "question": "Médicament manquant ? Signale-le à la direction",
+      "voice": "Le réflexe citoyen du jour : à l'hôpital public, demande d'abord tes médicaments à la pharmacie de l'hôpital. S'il en manque, signale-le à la direction."
+    },
+    {
+      "kind": "cta",
+      "image": "https://images.unsplash.com/photo-1674212943761-167b76c22c13?w=1400&q=80",
+      "kicker": "ABONNE-TOI",
+      "headline": "@241degres",
+      "sub": "Ton avis en commentaire !",
+      "voice": "Abonne-toi pour recevoir nos capsules d'informations chaque jour ! Et dis-nous en commentaire ce que tu penses de ces actualités."
+    }
+  ],
+  "sources": [
+    "Police / chef de l'État : https://presidence.ga/2026/11/21/renforcement-des-capacites-securitaires-le-chef-de-letat-dote-les-forces-de-defense-et-de-securite-de-materiel-roulant/ (communiqué officiel de la Présidence)",
+    "Pharmacies hospitalières : https://zurl.co/ka8Kn (L'Union, 24/11/2026) | https://gabonmediatime.com/gabon-le-gouvernement-donne-jusquau-15-decembre-pour-reorganiser-les-pharmacies-hospitalieres/",
+    "Droit de grève : https://gabonactu.com/blog/2026/11/24/droit-de-greve-le-gouvernement-precise-les-intentions-de-sa-reforme/ | https://gabonmediatime.com/gabon-un-avant-projet-de-loi-sur-le-droit-de-greve-declenche-la-colere-des-syndicats/",
+    "Fitch : https://www.gabonreview.com/notation-souveraine-fitch-maintient-le-gabon-a-ccc-mais-entrevoit-une-baisse-du-deficit-budgetaire-en-2027/ | https://www.union.sonapresse.com/fr/notation-desaccord-entre-le-gabon-et-fitch-ratings",
+    "Convois RN1 : https://gouvernement.ga/2026/11/24/wedia-2026-le-gabon-accueille-un-exercice-militaire-multinational-pour-renforcer-les-capacites-operationnelles-des-forces-armees/ | https://gabonmediatime.com/gex-2026-des-convois-militaires-annonces-entre-libreville-et-lambarene-du-23-au-30-novembre/"
+  ],
+  "credits": "Photos : Unsplash (burak cesur, Mika Baumeister, National Cancer Institute, Ross Sneddon, AltumCode, Niamat Ullah)",
+  "hashtags": "#Gabon #Libreville #241degres #ActuGabon #InfoGabon #pourtoi #OliguiNguema #Santé #DroitDeGrève #RN1"
+}

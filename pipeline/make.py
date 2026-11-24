@@ -16,6 +16,7 @@ FONTS = ROOT / "assets" / "fonts"
 W, H, FPS, SR = 1080, 1920, 30, 44100
 GREEN, YELLOW, BLUE, RED = (0, 158, 96), (252, 209, 22), (58, 117, 196), (230, 57, 70)
 WHITE, BLACK = (255, 255, 255), (8, 10, 14)
+INK_DARK = (14, 22, 36)
 CA = os.environ.get("CCR_CA", "/root/.ccr/ca-bundle.crt")
 
 
@@ -470,72 +471,80 @@ def fit_font(text, maxw, start, mk):
 
 
 def make_cover(ep_dir, scenes):
-    """Vignette TikTok 1080x1920 : date, logo, titre, les 5 infos avec une miniature chacune.
-    Tout le contenu utile tient dans la zone centrale 3:4 (y 240-1680) visible dans la grille du profil."""
+    """Vignette TikTok 1080x1920, lumineuse : grand logo, date, titre, 5 infos illustrées sur cartes claires.
+    Le contenu utile tient dans la zone centrale 3:4 (y 240-1680) visible dans la grille du profil."""
     import datetime
-    hero = prep_bg(ep_dir / "img" / "01.jpg")  # image de l'info n°1
-    bh, bw = hero.shape[:2]
-    y0, x0 = (bh - H) // 2, (bw - W) // 2
-    img = Image.fromarray(hero[y0:y0 + H, x0:x0 + W]).convert("RGBA")
-    img = img.filter(ImageFilter.GaussianBlur(1))
+    src = cv2.cvtColor(cv2.imread(str(ep_dir / "img" / "01.jpg")), cv2.COLOR_BGR2RGB)
+    h0, w0 = src.shape[:2]
+    sc_ = max(W / w0, H / h0)
+    src = cv2.resize(src, (int(w0 * sc_) + 1, int(h0 * sc_) + 1), interpolation=cv2.INTER_AREA)
+    y0, x0 = (src.shape[0] - H) // 2, (src.shape[1] - W) // 2
+    img = Image.fromarray(src[y0:y0 + H, x0:x0 + W]).convert("RGBA")
+    # voile léger : l'image reste lumineuse, juste assez assombrie sous le titre
     shade = Image.new("RGBA", (W, H))
     sd = ImageDraw.Draw(shade)
     for y in range(H):
-        a = int(20 + 200 * min(1, max(0, y - 250) / (H * 0.45)))
-        sd.line([(0, y), (W, y)], fill=(8, 10, 14, a))
+        a_ = int(25 + 95 * min(1, max(0, y - 300) / 500))
+        sd.line([(0, y), (W, y)], fill=(5, 20, 35, a_))
     img.alpha_composite(shade)
     d = ImageDraw.Draw(img)
-    # bande drapeau en haut et en bas
     for i, c in enumerate((GREEN, YELLOW, BLUE)):
-        d.rectangle((i * W / 3, 0, (i + 1) * W / 3, 18), fill=c)
-        d.rectangle((i * W / 3, H - 18, (i + 1) * W / 3, H), fill=c)
-    logo = logo_layer(130)
-    img.alpha_composite(logo, (60, 290))
-    # date complète
+        d.rectangle((i * W / 3, 0, (i + 1) * W / 3, 22), fill=c)
+        d.rectangle((i * W / 3, H - 22, (i + 1) * W / 3, H), fill=c)
+    # grand logo centré, sur une pastille claire pour ressortir
+    logo = logo_layer(200)
+    plate = Image.new("RGBA", (logo.width + 40, logo.height + 40), (0, 0, 0, 0))
+    ImageDraw.Draw(plate).rounded_rectangle((0, 0, plate.width - 1, plate.height - 1), radius=56, fill=(255, 255, 255, 235))
+    plate.alpha_composite(logo, (20, 20))
+    sh = Image.new("RGBA", (plate.width + 60, plate.height + 60), (0, 0, 0, 0))
+    sh.paste((0, 0, 0, 120), (30, 40), plate.split()[3])
+    img.alpha_composite(sh.filter(ImageFilter.GaussianBlur(16)), ((W - plate.width) // 2 - 30, 250 - 30))
+    img.alpha_composite(plate, ((W - plate.width) // 2, 250))
     try:
         dt = datetime.date.fromisoformat(ep_dir.name[:10])
         mois = ["JANV.", "FÉVR.", "MARS", "AVRIL", "MAI", "JUIN", "JUIL.", "AOÛT", "SEPT.", "OCT.", "NOV.", "DÉC."]
         date_txt = f"{JOURS[dt.weekday()]} {dt.day} {mois[dt.month - 1]} {dt.year}"
     except ValueError:
         date_txt = EP["date"]
-    dp = pill(date_txt, YELLOW, BLACK, 44)
-    img.alpha_composite(dp, (W - dp.width - 60, 290 + (130 - dp.height) // 2))
-    t = text_layer("LES INFOS DU JOUR", ANTON(118), WHITE, maxw=1000, spacing=0.86)
-    img.alpha_composite(t, (50, 440))
-    y = 440 + t.height + 25
-    briefs = [s for s in scenes if s["kind"] in ("brief", "story", "alert")][:5]
-    row_h = 188
+    y = 250 + plate.height + 30
+    dp = pill(date_txt, YELLOW, BLACK, 46)
+    img.alpha_composite(dp, ((W - dp.width) // 2, y))
+    y += dp.height + 18
+    t = text_layer("LES INFOS DU JOUR", ANTON(124), WHITE, maxw=1040, spacing=0.86, align="center")
+    img.alpha_composite(t, ((W - t.width) // 2, y))
+    y += t.height + 10
+    briefs = [s_ for s_ in scenes if s_["kind"] in ("brief", "story", "alert")][:5]
+    row_h, card_h = 168, 150
+    colors = [RED, GREEN, BLUE, YELLOW, GREEN]
     for n, sc in enumerate(briefs):
         idx = scenes.index(sc)
         th = Image.open(ep_dir / "img" / f"{idx:02d}.jpg").convert("RGB")
         side = min(th.size)
         th = th.crop(((th.width - side) // 2, (th.height - side) // 2, (th.width + side) // 2, (th.height + side) // 2))
-        th = th.resize((160, 160), Image.LANCZOS).convert("RGBA")
-        m = Image.new("L", (160, 160), 0)
-        ImageDraw.Draw(m).rounded_rectangle((0, 0, 159, 159), radius=26, fill=255)
+        th = th.resize((card_h - 16, card_h - 16), Image.LANCZOS).convert("RGBA")
+        m = Image.new("L", th.size, 0)
+        ImageDraw.Draw(m).rounded_rectangle((0, 0, th.width - 1, th.height - 1), radius=22, fill=255)
         th.putalpha(m)
         ry = y + n * row_h
-        d.rounded_rectangle((50, ry, W - 50, ry + 166), radius=30, fill=(12, 16, 22, 215))
-        img.alpha_composite(th, (53, ry + 3))
-        nb = pill(str(n + 1), RED if n == 0 else YELLOW, WHITE if n == 0 else BLACK, 40)
-        img.alpha_composite(nb, (35, ry - 12))
+        d.rounded_rectangle((50, ry, W - 50, ry + card_h), radius=30, fill=(255, 255, 255, 240))
+        d.rounded_rectangle((50, ry, 64, ry + card_h), radius=6, fill=colors[n])
+        img.alpha_composite(th, (74, ry + 8))
+        nb = pill(str(n + 1), colors[n], BLACK if colors[n] == YELLOW else WHITE, 38)
+        img.alpha_composite(nb, (40, ry - 14))
         label = sc.get("cover", sc.get("headline", "").replace("\n", " "))
         kick = sc.get("kicker", "").split("·")[-1].strip()
-        fk = MONT(30, "Black")
-        d.text((240, ry + 22), kick, font=fk, fill=YELLOW)
-        f = fit_font(label, W - 50 - 240 - 30, 60, ANTON)
-        lines = wrap(d, label, f, W - 50 - 240 - 30)
-        if len(lines) > 1:
-            f = fit_font(label, (W - 340) * 1.9, 52, ANTON)
-            lines = wrap(d, label, f, W - 50 - 240 - 30)[:2]
-        for k, l in enumerate(lines):
-            d.text((240, ry + 60 + k * (f.size + 4)), l, font=f, fill=WHITE)
-    h = text_layer("@241degres", MONT(48, "Black"), WHITE, maxw=900, align="center")
-    img.alpha_composite(h, ((W - h.width) // 2, y + 5 * row_h + 15))
+        tx = 74 + th.width + 22
+        d.text((tx, ry + 18), kick, font=MONT(30, "Black"), fill=(0, 120, 72))
+        maxw = W - 50 - tx - 25
+        f = fit_font(label, maxw, 58, ANTON)
+        d.text((tx, ry + 58), label, font=f, fill=INK_DARK)
+    hd = text_layer("@241degres", MONT(50, "Black"), WHITE, maxw=900, align="center")
+    img.alpha_composite(hd, ((W - hd.width) // 2, y + 5 * row_h + 5))
     img.convert("RGB").save(ep_dir / "out" / "cover.jpg", quality=93)
 
 
 LEAD, TAIL = 0.15, 0.30
+COVER_DUR = 1.0
 EP = {}
 
 
@@ -596,20 +605,31 @@ def main(ep_dir):
         print(f"scène {i} ok ({durs[i]:.1f} s)")
     if PREVIEW:
         return
+    # vignette en ouverture (1 s, léger zoom avant) : c'est elle que TikTok montre en premier
+    intro = ep_dir / "scenes" / "intro.mp4"
+    tmp = intro.with_suffix(".tmp.mp4")
+    subprocess.run(["ffmpeg", "-v", "error", "-y", "-framerate", str(FPS), "-i", str(ep_dir / "out" / "cover.jpg"),
+                    "-vf", f"format=yuv420p,loop=-1:1,trim=duration={COVER_DUR},"
+                           f"scale=iw*1.04:-1,zoompan=z='min(1+0.04*on/{int(COVER_DUR * FPS)},1.04)':d=1:"
+                           f"x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':s={W}x{H}:fps={FPS},format=yuv420p",
+                    "-c:v", "libx264", "-preset", "veryfast", "-crf", "20", "-pix_fmt", "yuv420p", "-r", str(FPS),
+                    str(tmp)], check=True)
+    tmp.rename(intro)
     lst = ep_dir / "scenes" / "list.txt"
-    lst.write_text("".join(f"file '{f.name}'\n" for f in files))
+    lst.write_text(f"file '{intro.name}'\n" + "".join(f"file '{f.name}'\n" for f in files))
     silent = ep_dir / "scenes" / "silent.mp4"
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-f", "concat", "-safe", "0", "-i", str(lst), "-c", "copy", str(silent)], check=True)
     # 3. audio : voix + musique ducking + whoosh
+    total += COVER_DUR
     n = int(total * SR) + SR
     voice = np.zeros(n, np.float32)
     sfx = np.zeros(n, np.float32)
     wh = whoosh()
-    pos = 0.0
+    pos = COVER_DUR
     for i, v in enumerate(voices):
         s = int((pos + LEAD) * SR)
         voice[s:s + len(v)] += v
-        if i > 0:
+        if True:
             ws = max(0, int(pos * SR) - len(wh) // 2)
             sfx[ws:ws + len(wh)] += wh[: n - ws]
         pos += durs[i]

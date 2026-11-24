@@ -20,7 +20,8 @@
       "headline": "PÉTROLE :\nEXXONMOBIL REÇU",
       "problem": "Le pétrole rapporte, mais pas toujours aux Gabonais",
       "clear": "Le président veut un contrat négocié vite et avec rigueur",
-      "voice": "Première info, le chef de l'État. Vendredi, Brice Clotaire Oligui Nguema a reçu le géant américain ExxonMobil, qui veut chercher du pétrole très loin en mer. Le problème : le pétrole rapporte, mais pas toujours aux Gabonais. En clair : le président demande au ministre du Pétrole de négocier vite et avec rigueur, pour un contrat dans les prochains mois."
+      "voice": "Première info, le chef de l'État. Vendredi, Brice Clotaire Oligui Nguema a reçu le géant américain ExxonMobil, qui veut chercher du pétrole très loin en mer. Le problème : le pétrole rapporte, mais pas toujours aux Gabonais. En clair : le président demande au ministre du Pétrole de négocier vite et avec rigueur, pour un contrat dans les prochains mois.",
+      "cover": "OLIGUI NGUEMA REÇOIT EXXONMOBIL"
     },
     {
       "kind": "brief",
@@ -29,7 +30,8 @@
       "headline": "MAISONS DÉMOLIES :\nQUI EST PAYÉ ?",
       "problem": "Des familles perdent leur maison pour les nouvelles routes",
       "clear": "395 personnes sur 424 payées. 19 attendent encore",
-      "voice": "Deuxième info : les démolitions pour les nouvelles routes de Libreville. Le problème : des familles perdent leur maison, et certaines trouvent l'indemnisation trop faible. En clair : le gouvernement dit avoir payé 395 personnes sur 424, pour plus de 7 milliards de francs CFA. Et le président a ajouté 4 milliards."
+      "voice": "Deuxième info : les démolitions pour les nouvelles routes de Libreville. Le problème : des familles perdent leur maison, et certaines trouvent l'indemnisation trop faible. En clair : le gouvernement dit avoir payé 395 personnes sur 424, pour plus de 7 milliards de francs CFA. Et le président a ajouté 4 milliards.",
+      "cover": "MAISONS DÉMOLIES : QUI EST PAYÉ ?"
     },
     {
       "kind": "brief",
@@ -38,7 +40,8 @@
       "headline": "RACKET ROUTIER :\nTOLÉRANCE ZÉRO",
       "problem": "Faux contrôles et billets glissés dans les papiers",
       "clear": "Le ministre promet des sanctions. Toi, ne paie pas",
-      "voice": "Troisième info. Le ministre de l'Intérieur, Edgard Moukoumbi, déclare la tolérance zéro contre le racket sur les routes. Le problème : faux contrôles, billets glissés dans les papiers… tout le monde connaît. En clair : il promet des sanctions contre les policiers fautifs. Mais pour casser le racket, il faut aussi arrêter de payer."
+      "voice": "Troisième info. Le ministre de l'Intérieur, Edgard Moukoumbi, déclare la tolérance zéro contre le racket sur les routes. Le problème : faux contrôles, billets glissés dans les papiers… tout le monde connaît. En clair : il promet des sanctions contre les policiers fautifs. Mais pour casser le racket, il faut aussi arrêter de payer.",
+      "cover": "RACKET ROUTIER : TOLÉRANCE ZÉRO"
     },
     {
       "kind": "brief",
@@ -47,7 +50,8 @@
       "headline": "POULET IMPORTÉ :\nBIENTÔT INTERDIT ?",
       "problem": "On importe presque tout notre poulet",
       "clear": "Interdiction prévue au 1er janvier 2027, mais contestée par les États-Unis",
-      "voice": "Quatrième info, dans ton assiette. Le poulet importé doit être interdit au 1er janvier 2027. Le problème : on importe presque tout notre poulet, et on en produit très peu. En clair : l'État aide les fermes locales. Mais les États-Unis contestent cette interdiction, et les règles pourraient encore changer."
+      "voice": "Quatrième info, dans ton assiette. Le poulet importé doit être interdit au 1er janvier 2027. Le problème : on importe presque tout notre poulet, et on en produit très peu. En clair : l'État aide les fermes locales. Mais les États-Unis contestent cette interdiction, et les règles pourraient encore changer.",
+      "cover": "POULET IMPORTÉ BIENTÔT INTERDIT ?"
     },
     {
       "kind": "brief",
@@ -56,7 +60,8 @@
       "headline": "PANTHÈRES :\n87e MONDIALES",
       "problem": "Défaite 2-1 face au Lesotho",
       "clear": "Le Gabon perd 2 places. La CAN 2027 reste jouable",
-      "voice": "Cinquième info, le foot. Les Panthères reculent de deux places au classement FIFA : quatre-vingt-septièmes mondiales. Le problème : la défaite 2 à 1 contre le Lesotho. En clair : la qualification pour la CAN 2027 reste possible, mais il faudra gagner les prochains matchs."
+      "voice": "Cinquième info, le foot. Les Panthères reculent de deux places au classement FIFA : quatre-vingt-septièmes mondiales. Le problème : la défaite 2 à 1 contre le Lesotho. En clair : la qualification pour la CAN 2027 reste possible, mais il faudra gagner les prochains matchs.",
+      "cover": "PANTHÈRES : 87ES MONDIALES"
     },
     {
       "kind": "civic",

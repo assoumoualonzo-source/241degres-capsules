@@ -6,7 +6,7 @@
 3. Pour chaque sujet : intérêt pour la population, intérêt pour l'État, réflexe citoyen.
 4. Images libres de droit (Unsplash) en orientation portrait.
 5. Écrire `episodes/AAAA-MM-JJ-info/episode.json` (hook, 5 scènes brief, civic, cta ; voix clonée via voice_ref).
-6. `python3 pipeline/make.py <dossier> --preview` : contrôler les images (pas de chevauchement), corriger, puis rendu final.
+6. `python3 pipeline/make.py <dossier> --preview` : contrôler les images et la vignette out/cover.jpg (date, logo, 5 infos lisibles, rien de coupé ; champ `cover` de chaque brief), corriger, puis rendu final.
 7. Envoyer `video.mp4`, `cover.jpg` et le texte de `post.txt` à l'utilisateur. Commit et push du JSON et de `post.txt`.
 
 ## CULTURE (un jour sur deux, ~11 h 30 Libreville)

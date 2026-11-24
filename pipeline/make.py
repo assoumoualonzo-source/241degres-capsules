@@ -458,6 +458,83 @@ def logo_layer(size):
     return img.resize((int(img.width * h / img.height), h), Image.LANCZOS)
 
 
+JOURS = ["LUNDI", "MARDI", "MERCREDI", "JEUDI", "VENDREDI", "SAMEDI", "DIMANCHE"]
+
+
+def fit_font(text, maxw, start, mk):
+    tmp = ImageDraw.Draw(Image.new("RGBA", (1, 1)))
+    size = start
+    while size > 20 and tmp.textlength(text, font=mk(size)) > maxw:
+        size -= 2
+    return mk(size)
+
+
+def make_cover(ep_dir, scenes):
+    """Vignette TikTok 1080x1920 : date, logo, titre, les 5 infos avec une miniature chacune.
+    Tout le contenu utile tient dans la zone centrale 3:4 (y 240-1680) visible dans la grille du profil."""
+    import datetime
+    hero = prep_bg(ep_dir / "img" / "01.jpg")  # image de l'info n°1
+    bh, bw = hero.shape[:2]
+    y0, x0 = (bh - H) // 2, (bw - W) // 2
+    img = Image.fromarray(hero[y0:y0 + H, x0:x0 + W]).convert("RGBA")
+    img = img.filter(ImageFilter.GaussianBlur(1))
+    shade = Image.new("RGBA", (W, H))
+    sd = ImageDraw.Draw(shade)
+    for y in range(H):
+        a = int(20 + 200 * min(1, max(0, y - 250) / (H * 0.45)))
+        sd.line([(0, y), (W, y)], fill=(8, 10, 14, a))
+    img.alpha_composite(shade)
+    d = ImageDraw.Draw(img)
+    # bande drapeau en haut et en bas
+    for i, c in enumerate((GREEN, YELLOW, BLUE)):
+        d.rectangle((i * W / 3, 0, (i + 1) * W / 3, 18), fill=c)
+        d.rectangle((i * W / 3, H - 18, (i + 1) * W / 3, H), fill=c)
+    logo = logo_layer(130)
+    img.alpha_composite(logo, (60, 290))
+    # date complète
+    try:
+        dt = datetime.date.fromisoformat(ep_dir.name[:10])
+        mois = ["JANV.", "FÉVR.", "MARS", "AVRIL", "MAI", "JUIN", "JUIL.", "AOÛT", "SEPT.", "OCT.", "NOV.", "DÉC."]
+        date_txt = f"{JOURS[dt.weekday()]} {dt.day} {mois[dt.month - 1]} {dt.year}"
+    except ValueError:
+        date_txt = EP["date"]
+    dp = pill(date_txt, YELLOW, BLACK, 44)
+    img.alpha_composite(dp, (W - dp.width - 60, 290 + (130 - dp.height) // 2))
+    t = text_layer("LES INFOS DU JOUR", ANTON(118), WHITE, maxw=1000, spacing=0.86)
+    img.alpha_composite(t, (50, 440))
+    y = 440 + t.height + 25
+    briefs = [s for s in scenes if s["kind"] in ("brief", "story", "alert")][:5]
+    row_h = 188
+    for n, sc in enumerate(briefs):
+        idx = scenes.index(sc)
+        th = Image.open(ep_dir / "img" / f"{idx:02d}.jpg").convert("RGB")
+        side = min(th.size)
+        th = th.crop(((th.width - side) // 2, (th.height - side) // 2, (th.width + side) // 2, (th.height + side) // 2))
+        th = th.resize((160, 160), Image.LANCZOS).convert("RGBA")
+        m = Image.new("L", (160, 160), 0)
+        ImageDraw.Draw(m).rounded_rectangle((0, 0, 159, 159), radius=26, fill=255)
+        th.putalpha(m)
+        ry = y + n * row_h
+        d.rounded_rectangle((50, ry, W - 50, ry + 166), radius=30, fill=(12, 16, 22, 215))
+        img.alpha_composite(th, (53, ry + 3))
+        nb = pill(str(n + 1), RED if n == 0 else YELLOW, WHITE if n == 0 else BLACK, 40)
+        img.alpha_composite(nb, (35, ry - 12))
+        label = sc.get("cover", sc.get("headline", "").replace("\n", " "))
+        kick = sc.get("kicker", "").split("·")[-1].strip()
+        fk = MONT(30, "Black")
+        d.text((240, ry + 22), kick, font=fk, fill=YELLOW)
+        f = fit_font(label, W - 50 - 240 - 30, 60, ANTON)
+        lines = wrap(d, label, f, W - 50 - 240 - 30)
+        if len(lines) > 1:
+            f = fit_font(label, (W - 340) * 1.9, 52, ANTON)
+            lines = wrap(d, label, f, W - 50 - 240 - 30)[:2]
+        for k, l in enumerate(lines):
+            d.text((240, ry + 60 + k * (f.size + 4)), l, font=f, fill=WHITE)
+    h = text_layer("@241degres", MONT(48, "Black"), WHITE, maxw=900, align="center")
+    img.alpha_composite(h, ((W - h.width) // 2, y + 5 * row_h + 15))
+    img.convert("RGB").save(ep_dir / "out" / "cover.jpg", quality=93)
+
+
 LEAD, TAIL = 0.15, 0.30
 EP = {}
 
@@ -493,6 +570,7 @@ def main(ep_dir):
         durs.append(round((LEAD + len(v) / SR + TAIL) * FPS) / FPS)
     total = sum(durs)
     print(f"Durée totale : {total:.1f} s")
+    make_cover(ep_dir, scenes)
     # 2. vidéo, une scène = un fichier
     offset, files = 0.0, []
     for i, sc in enumerate(scenes):
@@ -504,8 +582,6 @@ def main(ep_dir):
                 S.frame(int(q * durs[i] * FPS)).save(ep_dir / "out" / f"prev_{i:02d}_{int(q*100)}.jpg", quality=80)
             offset += durs[i]
             continue
-        if i == 0:
-            S.frame(int(1.2 * FPS)).save(ep_dir / "out" / "cover.jpg", quality=92)
         tmp = out.with_suffix(".tmp.mp4")
         p = subprocess.Popen(["ffmpeg", "-v", "error", "-y", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}",
                               "-r", str(FPS), "-i", "-", "-c:v", "libx264", "-preset", "veryfast", "-crf", "20",

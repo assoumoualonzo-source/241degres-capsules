@@ -18,7 +18,7 @@
 | kind | champs | usage |
 |---|---|---|
 | hook | kicker, headline | accroche, 2 lignes max |
-| brief | kicker, headline, problem, clear | une info : titre + LE PROBLÈME + EN CLAIR (format INFO quotidien) |
+| brief | kicker, headline, problem, clear, cover | une info : titre + LE PROBLÈME + EN CLAIR (format INFO quotidien) |
 | story | kicker, headline, stat, stat_label | une actu + un chiffre |
 | split | kicker, left_title, left, right_title, right | pour vous / pour l'État |
 | alert | kicker, headline, bullets[3] (les 2 premières = interdits, la dernière = action) | arnaque, sécurité |
@@ -32,6 +32,7 @@ Chaque scène a `image` (URL d'une photo libre de droit, portrait de préférenc
 - Titres : 2 lignes de 14 caractères max (3 lignes de 10 max pour civic).
 - `stat` : 12 caractères max.
 - Voix brief : 40 à 60 mots par info. Voix : fr-FR-HenriNeural, débit +5 %, timbre de Stéphane via `voice_ref` (assets/voix/stephane_se.json, hors dépôt).
+- cover : titre court en MAJUSCULES pour la vignette TikTok (32 caractères max, ex. « RACKET ROUTIER : TOLÉRANCE ZÉRO »).
 - problem / clear : 70 caractères max ; titres brief : 2 lignes de 18 caractères max.
 - split accepte left_color et right_color (red, green, blue, yellow).
 - Écrire les sigles comme ils se prononcent dans `voice` (« F M I », « CCC moins ») et normalement à l'écran.

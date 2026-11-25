@@ -1,0 +1,92 @@
+{
+  "type": "info",
+  "date": "25 NOV. 2026",
+  "title": "Oligui Nguema et Maada Bio, délestages reportés, salaires du pétrole, note Fitch, National Foot : les infos du jour",
+  "voice": "fr-FR-HenriNeural",
+  "rate": "+5%",
+  "voice_ref": "assets/voix/stephane_se.json",
+  "scenes": [
+    {
+      "kind": "hook",
+      "image": "https://images.unsplash.com/photo-1674212943761-167b76c22c13?w=1400&q=80",
+      "kicker": "ACTU GABON",
+      "headline": "LES INFOS\nDU JOUR",
+      "voice": "Les infos du jour au Gabon. On t'explique."
+    },
+    {
+      "kind": "brief",
+      "image": "https://images.unsplash.com/photo-1736142260133-0cb88e7109c6?w=1400&q=80",
+      "kicker": "1 · CHEF DE L'ÉTAT",
+      "headline": "MAADA BIO\nÀ LIBREVILLE",
+      "problem": "Les pays africains ont souvent les mêmes défis",
+      "clear": "Emploi des jeunes, villes : pas d'accord signé",
+      "voice": "Première info, le chef de l'État. Dimanche et lundi, Brice Clotaire Oligui Nguema a reçu à Libreville le président de la Sierra Leone, Julius Maada Bio. Ils ont visité le front de mer et la Baie des Rois. Au menu : l'emploi des jeunes, la modernisation des villes et les services publics. Aucun accord signé : c'est un partage d'expériences.",
+      "cover": "OLIGUI NGUEMA REÇOIT MAADA BIO"
+    },
+    {
+      "kind": "brief",
+      "image": "https://images.unsplash.com/photo-1534592953981-72dc7163dd51?w=1400&q=80",
+      "kicker": "2 · ÉLECTRICITÉ",
+      "headline": "DÉLESTAGES :\nREPORTÉS EN 2027",
+      "problem": "Coupures prévues du 27 au 29 novembre",
+      "clear": "Travaux repoussés à janvier-février 2027",
+      "voice": "Deuxième info, la lumière. Les coupures prévues du 27 au 29 novembre à Libreville et Port-Gentil n'auront pas lieu. Le ministre de l'Eau et de l'Énergie, Olivier Mouckocko, les reporte au début de 2027. Le fournisseur de gaz Perenco assure que le gazoduc peut tenir encore au moins un mois. Mais ces travaux ne pourront pas être repoussés à l'infini.",
+      "cover": "DÉLESTAGES DU 27 AU 29 REPORTÉS"
+    },
+    {
+      "kind": "brief",
+      "image": "https://images.unsplash.com/photo-1646191673580-7160942ac198?w=1400&q=80",
+      "kicker": "3 · TON SALAIRE",
+      "headline": "PÉTROLE : SALAIRES\nSOUS CONTRÔLE",
+      "problem": "Le gouvernement dénonce du laxisme sur les salaires",
+      "clear": "Contrôles des contrats, salaires et cotisations",
+      "voice": "Troisième info, ton salaire. À Port-Gentil, les ministres du Travail et du Pétrole haussent le ton contre les sous-traitants pétroliers. Des inspecteurs vont vérifier les contrats, les embauches, les salaires et les cotisations sociales. Le message est clair : le temps de l'impunité est fini. Si un patron ne paie pas ses employés, la loi doit s'appliquer.",
+      "cover": "PÉTROLE : SALAIRES CONTRÔLÉS"
+    },
+    {
+      "kind": "brief",
+      "image": "https://images.unsplash.com/photo-1626207887298-da2fc1f50e82?w=1400&q=80",
+      "kicker": "4 · L'ARGENT DE L'ÉTAT",
+      "headline": "NOTE DU PAYS :\nLE GABON CONTESTE",
+      "problem": "Fitch garde une note très basse : CCC-",
+      "clear": "L'État dit que le budget 2027 a été oublié",
+      "voice": "Quatrième info, l'argent de l'État. L'agence Fitch note les pays comme on note les élèves. Et elle garde au Gabon une note très basse : CCC moins. Le gouvernement conteste. Il dit que Fitch n'a pas tenu compte du budget 2027, voté ce mois-ci. Pourquoi c'est important : avec une mauvaise note, l'État emprunte plus cher.",
+      "cover": "FITCH : LE GABON CONTESTE"
+    },
+    {
+      "kind": "brief",
+      "image": "https://images.unsplash.com/photo-1696689646506-a3f31f3650a8?w=1400&q=80",
+      "kicker": "5 · SPORT",
+      "headline": "NATIONAL FOOT :\nÇA REPART SAMEDI",
+      "problem": "Le championnat a été reporté plusieurs fois depuis octobre",
+      "clear": "La Gabonaise des Jeux soutient la D1 et la D2 pendant 3 ans",
+      "voice": "Cinquième info, le foot. Le championnat national reprend enfin ce samedi 28 novembre, au stade de l'Amitié, avec CF Mounana contre AS Mangasport. Il avait été reporté plusieurs fois. La Gabonaise des Jeux a signé un partenariat de trois ans pour soutenir la première et la deuxième division. Le montant n'a pas été rendu public.",
+      "cover": "NATIONAL FOOT : REPRISE SAMEDI"
+    },
+    {
+      "kind": "civic",
+      "image": "https://images.unsplash.com/photo-1674212943761-167b76c22c13?w=1400&q=80",
+      "kicker": "LE RÉFLEXE CITOYEN",
+      "headline": "VÉRIFIE\nTA FICHE\nDE PAIE.",
+      "question": "Salaire ou cotisations pas payés ? Va à l'inspection du travail",
+      "voice": "Le réflexe citoyen du jour : vérifie ta fiche de paie et tes cotisations sociales. Si ton salaire ou tes cotisations ne sont pas payés, va voir l'inspection du travail."
+    },
+    {
+      "kind": "cta",
+      "image": "https://images.unsplash.com/photo-1674212943761-167b76c22c13?w=1400&q=80",
+      "kicker": "ABONNE-TOI",
+      "headline": "@241degres",
+      "sub": "Ton avis en commentaire !",
+      "voice": "Abonne-toi pour recevoir nos capsules d'informations chaque jour ! Et dis-nous en commentaire ce que tu penses de ces actualités."
+    }
+  ],
+  "sources": [
+    "Visite de Julius Maada Bio : https://www.gabonreview.com/diplomatie-julius-maada-bio-et-oligui-nguema-misent-sur-le-partage-dexperiences/ | https://fr.infosgabon.com/gabon-sierra-leone-oligui-nguema-et-julius-maada-bio-donnent-un-nouvel-elan-a-la-cooperation-bilaterale/",
+    "Délestages reportés : https://www.gabonreview.com/energie-les-delestages-annonces-du-27-au-29-novembre-sont-reportes/ | https://gabonmediatime.com/gabon-les-delestages-programmes-du-27-au-29-novembre-reportes-a-2027/",
+    "Sous-traitance pétrolière : https://www.gabonreview.com/port-gentil-sous-traitance-petroliere-le-gouvernement-annonce-la-fin-du-laxisme/ | https://gabonactu.com/blog/2026/11/24/sous-traitance-petroliere-salaires-et-cotisations-sous-surveillance/",
+    "Note Fitch : https://www.union.sonapresse.com/fr/notation-desaccord-entre-le-gabon-et-fitch-ratings | https://fr.infosgabon.com/gabon-dette-publique-notation-souveraine-libreville-contre-attaque-et-demande-a-fitch-de-revoir-son-jugement/",
+    "National Foot : https://gabonactu.com/blog/2026/11/24/national-foot-1-cf-mounana-as-mangasport-en-affiche-douverture-au-stade-de-lamitie/ | https://fr.infosgabon.com/football-la-gabonaise-des-jeux-entre-en-jeu-pour-sauver-le-national-foot/"
+  ],
+  "credits": "Photos : Unsplash (burak cesur, Ajai S, David Levêque, FUJIDUDEZ, Ksenia Makagonova, Maxx Sas)",
+  "hashtags": "#Gabon #Libreville #241degres #ActuGabon #InfoGabon #pourtoi #OliguiNguema #Délestages #PortGentil #NationalFoot"
+}

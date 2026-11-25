@@ -1,8 +1,8 @@
 {
   "type": "culture",
   "date": "25 NOV. 2026",
-  "title": "Libreville Fashion Week : la toute première, du 15 au 19 décembre 2026 👗✨ Dates, lieux, défilé, formations gratuites : on t'explique.",
-  "cover_title": "FASHION WEEK",
+  "title": "Focus culture de la semaine 🎭 Fashion Week, Oscar d'Or de la photo, Carmina Burana, concours FILIGA, retour de nos biens culturels",
+  "cover_title": "FOCUS CULTURE",
   "voice": "fr-FR-HenriNeural",
   "rate": "+5%",
   "scenes": [
@@ -10,58 +10,58 @@
       "kind": "hook",
       "image": "https://images.unsplash.com/photo-1768212566108-4ce4f329e4d2?w=1400&q=80",
       "kicker": "FOCUS CULTURE",
-      "headline": "LIBREVILLE\nFASHION WEEK",
-      "voice": "Libreville va avoir sa toute première Fashion Week. On t'explique."
-    },
-    {
-      "kind": "story",
-      "image": "https://images.unsplash.com/photo-1674212943761-167b76c22c13?w=1400&q=80",
-      "kicker": "FOCUS · DATES",
-      "headline": "5 JOURS,\n4 LIEUX",
-      "stat": "15-19 DÉC.",
-      "stat_label": "Baie des Rois, Radisson Blu, Soho, Gué-Gué",
-      "voice": "C'est du 15 au 19 décembre, la première édition. Cinq jours, quatre lieux : la Baie des Rois, le Radisson Blu, Soho, et un village au Haut de Gué-Gué.",
-      "cover": "15–19 DÉC., 4 LIEUX"
+      "headline": "5 ACTUS\nCULTURE",
+      "voice": "Le focus culture de la semaine au Gabon. Cinq actus, on t'explique."
     },
     {
       "kind": "story",
       "image": "https://images.unsplash.com/photo-1767294274254-57367fa62236?w=1400&q=80",
-      "kicker": "FOCUS · DÉFILÉ",
-      "headline": "LE GRAND\nDÉFILÉ",
-      "stat": "18 DÉC.",
-      "stat_label": "au Radisson Blu, sur billet",
-      "voice": "Le grand défilé, c'est le 18 décembre au Radisson Blu. Il faut un billet : en ligne, à iStore Angondjé, ou à Amplitude Concept Store, au carrefour GG.",
-      "cover": "DÉFILÉ LE 18 DÉCEMBRE"
+      "kicker": "1 · MODE",
+      "headline": "FASHION WEEK\nÀ LIBREVILLE",
+      "stat": "15-19 DÉC.",
+      "stat_label": "grand défilé le 18 décembre au Radisson Blu",
+      "voice": "Un, la mode. Libreville aura sa toute première Fashion Week, du 15 au 19 décembre. Grand défilé le 18 au Radisson Blu, avec 60 mannequins. Et des formations gratuites, sur inscription.",
+      "cover": "1RE FASHION WEEK DE LIBREVILLE"
     },
     {
       "kind": "story",
-      "image": "https://images.unsplash.com/photo-1555529771-835f59fc5efe?w=1400&q=80",
-      "kicker": "FOCUS · CASTING",
-      "headline": "LE CASTING",
-      "stat": "60",
-      "stat_label": "mannequins retenus sur plus de 200 candidatures",
-      "voice": "Au casting, plus de 200 candidatures. 60 mannequins ont été retenus. Des créateurs gabonais seront là, avec des créateurs venus du Bénin et du Sénégal.",
-      "cover": "60 MANNEQUINS RETENUS"
+      "image": "https://images.unsplash.com/photo-1684861078292-126b1bad0b70?w=1400&q=80",
+      "kicker": "2 · PHOTO",
+      "headline": "L'OSCAR D'OR\nPOUR LE GABON",
+      "stat": "OSCAR D'OR",
+      "stat_label": "Oscars de la Photographie africaine, Lomé",
+      "voice": "Deux, la photo. Le 14 novembre à Lomé, un photographe gabonais, alias MZ, a reçu l'Oscar d'Or. C'est la plus haute distinction des Oscars de la Photographie africaine.",
+      "cover": "OSCAR D'OR POUR UN GABONAIS"
     },
     {
       "kind": "story",
-      "image": "https://images.unsplash.com/photo-1625479144604-ae69462778b7?w=1400&q=80",
-      "kicker": "FOCUS · POUR TOI",
-      "headline": "C'EST\nPOUR TOI",
-      "stat": "GRATUIT",
-      "stat_label": "Creative Market et formations, sur inscription",
-      "voice": "Et il y a du gratuit pour toi. Le Creative Market à la Baie des Rois. Et des formations en couture et en direction artistique, sur inscription. Les places sont limitées.",
-      "cover": "MARCHÉ ET FORMATIONS GRATUITS"
+      "image": "https://images.unsplash.com/photo-1764219945689-b17b66711ee1?w=1400&q=80",
+      "kicker": "3 · MUSIQUE",
+      "headline": "CARMINA\nBURANA",
+      "stat": "27-28 NOV.",
+      "stat_label": "salle Pierre Akendengue, Institut français",
+      "voice": "Trois, la musique. Ce vendredi 27 novembre, 45 choristes d'ici chantent Carmina Burana, pour la première fois au Gabon. Samedi 28, récital de la Gabonaise Adriana Bignagni Lesca. C'est salle Pierre Akendengue.",
+      "cover": "CLASSIQUE LES 27 ET 28 NOV."
     },
     {
       "kind": "story",
-      "image": "https://images.unsplash.com/photo-1578353022142-09264fd64295?w=1400&q=80",
-      "kicker": "FOCUS · LE BUT",
-      "headline": "UNE VRAIE\nFILIÈRE",
-      "stat": "1RE ÉDITION",
-      "stat_label": "portée par le Libreville Fashion Council",
-      "voice": "Derrière, il y a le créateur Shawn André Oyini et le Libreville Fashion Council. Le but : créer, montrer, et construire une vraie filière de la mode au Gabon.",
-      "cover": "CONSTRUIRE LA FILIÈRE MODE"
+      "image": "https://images.unsplash.com/photo-1604866830893-c13cafa515d5?w=1400&q=80",
+      "kicker": "4 · LIVRES",
+      "headline": "CONCOURS\nFILIGA",
+      "stat": "60 000 FCFA",
+      "stat_label": "par lauréat, inscriptions jusqu'au 31 mars 2027",
+      "voice": "Quatre, les livres. Le concours du FILIGA est ouvert : nouvelle, poésie, roman, BD, slam, arts visuels. 60 000 francs CFA par lauréat. Participation : 15 000 francs par œuvre. Tu as jusqu'au 31 mars 2027.",
+      "cover": "CONCOURS FILIGA OUVERT"
+    },
+    {
+      "kind": "story",
+      "image": "https://images.unsplash.com/photo-1660202119841-ed56fc32d6a0?w=1400&q=80",
+      "kicker": "5 · PATRIMOINE",
+      "headline": "NOS TRÉSORS\nÀ L'ÉTRANGER",
+      "stat": "UNESCO",
+      "stat_label": "aide au retour des biens culturels gabonais",
+      "voice": "Cinq, le patrimoine. Lundi 23 novembre, l'UNESCO et le ministre de l'Intérieur ont parlé du retour des biens culturels gabonais gardés à l'étranger. Un chantier à suivre.",
+      "cover": "RETOUR DE NOS BIENS CULTURELS"
     },
     {
       "kind": "cta",
@@ -73,10 +73,12 @@
     }
   ],
   "sources": [
-    "Gabonactu, 25/11/2026 : https://gabonactu.com/blog/2026/11/25/libreville-fashion-week-2026-shawn-andre-oyini-veut-faire-rayonner-les-talents-de-la-mode-gabonaise",
-    "Gabonews, 24/11/2026 : https://www.gabonews.com/fr/actus/arts-culture/article/libreville-fashion-week-shawn-andre-oyini-veut",
-    "Gabonreview, 10/11/2026 : https://www.gabonreview.com/mode-libreville-accueille-sa-premiere-fashion-week-du-15-au-19-decembre/"
+    "Fashion Week : https://gabonactu.com/blog/2026/11/25/libreville-fashion-week-2026-shawn-andre-oyini-veut-faire-rayonner-les-talents-de-la-mode-gabonaise | https://www.gabonews.com/fr/actus/arts-culture/article/libreville-fashion-week-shawn-andre-oyini-veut | https://www.gabonreview.com/mode-libreville-accueille-sa-premiere-fashion-week-du-15-au-19-decembre/",
+    "Oscar d'Or OPA 2026 : https://www.gabonreview.com/opa-2026-yohane-menzoughe-fait-briller-le-gabon-avec-loscar-dor/ | https://gabonmediatime.com/opa-2026-le-gabonais-yohanne-menzoughe-sacre-oscar-dor/",
+    "Festival de musique classique de l'IFG : https://gabonmediatime.com/festival-musique-classique-carmina-burana-et-adriana-bignagni-lesca-en-prestation-inedite-ces-27-et-28-novembre/",
+    "Concours FILIGA 2027 : https://gabonmediatime.com/filiga-2027-ouverture-de-la-5eme-edition-du-concours-de-lettres-et-des-arts/",
+    "Gabon-UNESCO, biens culturels : https://www.gabonreview.com/gabon-unesco-rapatriement-des-biens-culturels-et-securite-des-journalistes-les-nouveaux-chantiers-de-cooperation/"
   ],
-  "credits": "Photos : Unsplash (WyteShot, burak cesur, Shahabudin Ibragimov, charlesdeluvio, Bozhin Karaivanov, Darling Arias, Ritojnan Mukherjee) — photos d'illustration",
-  "hashtags": "#Gabon #241degres #Libreville #LibrevilleFashionWeek #ModeGabonaise #CultureGabon #FashionWeek #pourtoi"
+  "credits": "Photos : Unsplash (WyteShot, Shahabudin Ibragimov, Karen Grigorean, Carlota O., Olena Bohovyk, Ilia Bronskiy, Ritojnan Mukherjee) — photos d'illustration",
+  "hashtags": "#Gabon #241degres #CultureGabon #FocusCulture #Libreville #FashionWeek #Photographie #MusiqueClassique #FILIGA #Patrimoine #pourtoi"
 }

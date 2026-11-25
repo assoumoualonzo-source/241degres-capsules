@@ -593,10 +593,13 @@ def make_cover(ep_dir, scenes):
     dp = pill(date_txt, YELLOW, BLACK, 46)
     img.alpha_composite(dp, ((W - dp.width) // 2, y))
     y += dp.height + 18
-    t = text_layer("LES INFOS DU JOUR", ANTON(124), WHITE, maxw=1040, spacing=0.86, align="center")
+    t = text_layer(EP.get("cover_title", "LES INFOS DU JOUR"), ANTON(124), WHITE, maxw=1040, spacing=0.86, align="center")
     img.alpha_composite(t, ((W - t.width) // 2, y))
     y += t.height + 10
     briefs = [s_ for s_ in scenes if s_["kind"] in ("brief", "story", "alert")][:5]
+    ranks = sorted([s_ for s_ in scenes if s_["kind"] == "rank"], key=lambda s_: int(s_["rank"]))
+    if ranks and not briefs:
+        briefs = ranks[:5]
     row_h, card_h = 168, 150
     colors = [RED, GREEN, BLUE, YELLOW, GREEN]
     for n, sc in enumerate(briefs):
@@ -612,7 +615,7 @@ def make_cover(ep_dir, scenes):
         d.rounded_rectangle((50, ry, W - 50, ry + card_h), radius=30, fill=(255, 255, 255, 240))
         d.rounded_rectangle((50, ry, 64, ry + card_h), radius=6, fill=colors[n])
         img.alpha_composite(th, (74, ry + 8))
-        nb = pill(str(n + 1), colors[n], BLACK if colors[n] == YELLOW else WHITE, 38)
+        nb = pill(str(sc.get("rank", n + 1)), colors[n], BLACK if colors[n] == YELLOW else WHITE, 38)
         img.alpha_composite(nb, (40, ry - 14))
         label = sc.get("cover", sc.get("headline", "").replace("\n", " "))
         kick = sc.get("kicker", "").split("·")[-1].strip()

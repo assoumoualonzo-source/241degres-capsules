@@ -267,6 +267,63 @@ def music_bed(n):
     return out / (np.abs(out).max() + 1e-6)
 
 
+def birds_bed(n, seed=241):
+    """Ambiance forêt tropicale générée (libre de droits) : souffle d'air très doux + chants d'oiseaux épars.
+    Remplace la musique : la piste musicale est ajoutée sur TikTok."""
+    rng = np.random.default_rng(seed)
+    out = np.zeros(n, np.float32)
+    # souffle de forêt : bruit brun très bas, filtré
+    air = np.cumsum(rng.standard_normal(n)).astype(np.float32)
+    air -= np.convolve(air, np.ones(4410) / 4410, mode="same")
+    out += 0.04 * air / (np.abs(air).max() + 1e-6)
+
+    def tone(f0, f1, dur, vib=0.0, harm=0.15):
+        k = int(dur * SR)
+        tt = np.arange(k) / SR
+        f = np.linspace(f0, f1, k) * (1 + vib * np.sin(2 * np.pi * 28 * tt))
+        ph = 2 * np.pi * np.cumsum(f) / SR
+        env = np.sin(np.pi * np.minimum(1, tt / dur)) ** 1.5
+        return (np.sin(ph) + harm * np.sin(2 * ph)) * env
+
+    def whistle():   # sifflement qui glisse
+        f = rng.uniform(1800, 3400)
+        return tone(f, f * rng.uniform(0.7, 1.4), rng.uniform(0.18, 0.45), vib=0.01)
+
+    def trill():     # trille rapide
+        f, k = rng.uniform(3000, 5000), rng.integers(6, 14)
+        gap = rng.uniform(0.045, 0.07)
+        notes = [np.concatenate([tone(f * rng.uniform(0.95, 1.05), f * 1.1, 0.035), np.zeros(int(gap * SR))])
+                 for _ in range(k)]
+        x = np.concatenate(notes)
+        return x * np.linspace(1, 0.6, len(x))
+
+    def dove():      # « hou-hou » grave de tourterelle
+        f = rng.uniform(480, 620)
+        a = tone(f, f * 0.92, 0.32, harm=0.05)
+        return np.concatenate([a, np.zeros(int(0.12 * SR)), tone(f * 1.06, f * 0.9, 0.45, harm=0.05)]) * 0.7
+
+    def chip():      # petits cris secs
+        f = rng.uniform(4000, 6500)
+        return np.concatenate([np.concatenate([tone(f, f * 0.8, 0.025), np.zeros(int(rng.uniform(0.08, 0.2) * SR))])
+                               for _ in range(rng.integers(2, 5))])
+
+    kinds = [whistle, whistle, trill, dove, chip]
+    t = rng.uniform(0.2, 1.0)
+    while t < n / SR:
+        call = kinds[rng.integers(len(kinds))]()
+        dist = rng.uniform(0.25, 1.0)                     # oiseau proche ou lointain
+        if dist < 0.6:                                    # lointain : plus doux et plus sourd
+            call = np.convolve(call, np.ones(6) / 6, mode="same")
+        reps = rng.integers(1, 3)
+        for r in range(reps):
+            s = int((t + r * (len(call) / SR + rng.uniform(0.15, 0.4))) * SR)
+            e = min(n, s + len(call))
+            if s < n:
+                out[s:e] += 0.5 * dist * call[: e - s]
+        t += rng.uniform(0.6, 2.2)
+    return out / (np.abs(out).max() + 1e-6)
+
+
 def whoosh():
     n = int(0.45 * SR)
     rng = np.random.default_rng(7)
@@ -645,7 +702,7 @@ def main(ep_dir):
     lst.write_text(f"file '{intro.name}'\n" + "".join(f"file '{f.name}'\n" for f in files))
     silent = ep_dir / "scenes" / "silent.mp4"
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-f", "concat", "-safe", "0", "-i", str(lst), "-c", "copy", str(silent)], check=True)
-    # 3. audio : voix + musique ducking + whoosh
+    # 3. audio : voix + ambiance oiseaux très légère + whoosh (la musique est ajoutée sur TikTok)
     total += COVER_DUR
     n = int(total * SR) + SR
     voice = np.zeros(n, np.float32)
@@ -661,7 +718,7 @@ def main(ep_dir):
         pos += durs[i]
     env = np.convolve(np.abs(voice), np.ones(SR // 5) / (SR // 5), mode="same")
     duck = 1 - 0.65 * np.clip(env / (env.max() * 0.25 + 1e-6), 0, 1)
-    mix = voice * 1.0 + music_bed(n) * 0.13 * duck + sfx * 0.35
+    mix = voice * 1.0 + birds_bed(n) * 0.04 + sfx * 0.35
     fade = int(1.2 * SR)
     mix = mix[: int(total * SR)]
     mix[-fade:] *= np.linspace(1, 0, fade)

@@ -1,0 +1,90 @@
+{
+  "type": "culture",
+  "date": "25 NOV. 2026",
+  "title": "TOP 5 des trésors nature du Gabon : Pongara, Mayumba, Lopé, Ivindo, Loango 🌿🐘",
+  "cover_title": "TOP 5 NATURE",
+  "voice": "fr-FR-HenriNeural",
+  "rate": "+5%",
+  "scenes": [
+    {
+      "kind": "hook",
+      "image": "https://images.unsplash.com/photo-1674212943761-167b76c22c13?w=1400&q=80",
+      "kicker": "CULTURE 241",
+      "headline": "TOP 5 NATURE\nDU GABON",
+      "voice": "Top 5 des trésors nature du Gabon. Le pays compte 13 parcs nationaux, tous créés en 2002. Voici notre classement."
+    },
+    {
+      "kind": "rank",
+      "image": "https://images.unsplash.com/photo-1764101919176-467e40fd27d5?w=1400&q=80",
+      "kicker": "CULTURE 241",
+      "rank": 5,
+      "headline": "PONGARA",
+      "stat": "MANGROVES",
+      "stat_label": "et plages de ponte des tortues luths",
+      "voice": "Numéro 5 : Pongara. Des mangroves entre l'estuaire du Komo et l'océan. Et sur ses plages, les tortues luths viennent pondre.",
+      "cover": "PONGARA"
+    },
+    {
+      "kind": "rank",
+      "image": "https://images.unsplash.com/photo-1592669169929-07887a3ee649?w=1400&q=80",
+      "kicker": "CULTURE 241",
+      "rank": 4,
+      "headline": "MAYUMBA",
+      "stat": "60 KM",
+      "stat_label": "de plages de ponte des tortues luths",
+      "voice": "Numéro 4 : Mayumba, le parc de la mer. 60 kilomètres de plages parmi les plus importantes au monde pour la ponte des tortues luths.",
+      "cover": "MAYUMBA"
+    },
+    {
+      "kind": "rank",
+      "image": "https://images.unsplash.com/photo-1653842045754-59b63ea5a58e?w=1400&q=80",
+      "kicker": "CULTURE 241",
+      "rank": 3,
+      "headline": "LA LOPÉ",
+      "stat": "1946",
+      "stat_label": "première aire protégée du pays",
+      "voice": "Numéro 3 : la Lopé. Protégée depuis 1946, c'est la doyenne. Forêt, savanes et gravures anciennes : classée à l'UNESCO en 2007.",
+      "cover": "LA LOPÉ"
+    },
+    {
+      "kind": "rank",
+      "image": "https://images.unsplash.com/photo-1525124783743-e6fa14aa83bb?w=1400&q=80",
+      "kicker": "CULTURE 241",
+      "rank": 2,
+      "headline": "L'IVINDO",
+      "stat": "UNESCO 2021",
+      "stat_label": "2e site du Gabon au patrimoine mondial",
+      "voice": "Numéro 2 : l'Ivindo et ses chutes de Kongou. Près de 300 000 hectares de forêt. Depuis 2021, c'est notre deuxième site au patrimoine mondial.",
+      "cover": "L'IVINDO"
+    },
+    {
+      "kind": "rank",
+      "image": "https://images.unsplash.com/photo-1759323996410-d08a8d548270?w=1400&q=80",
+      "kicker": "CULTURE 241",
+      "rank": 1,
+      "headline": "LOANGO",
+      "stat": "1 550 KM²",
+      "stat_label": "éléphants et hippos sur la plage",
+      "voice": "Numéro 1 : Loango. Ici, éléphants, buffles et hippopotames marchent sur la plage. On l'appelle le pays des hippos surfeurs !",
+      "cover": "LOANGO"
+    },
+    {
+      "kind": "cta",
+      "image": "https://images.unsplash.com/photo-1771223832331-77c4c1faa029?w=1400&q=80",
+      "kicker": "241 DEGRÉS",
+      "headline": "ABONNE-TOI",
+      "sub": "Ton avis en commentaire !",
+      "voice": "Abonne-toi pour recevoir nos capsules d'informations chaque jour ! Et dis-nous en commentaire ce que tu en penses."
+    }
+  ],
+  "sources": [
+    "13 parcs nationaux, tous créés en 2002 : https://en.wikipedia.org/wiki/List_of_national_parks_of_Gabon",
+    "Pongara (estuaire du Komo, mangroves, tortues luths) : https://fr.wikipedia.org/wiki/Parc_national_de_Pongara",
+    "Mayumba (60 km de plages de ponte des tortues luths, parc marin) : https://en.wikipedia.org/wiki/Mayumba_National_Park",
+    "Lopé (réserve depuis 1946, UNESCO 2007, bien mixte) : https://fr.wikipedia.org/wiki/Parc_national_de_la_Lop%C3%A9 | https://www.africanews.com/2021/07/29/gabon-s-ivindo-park-given-world-heritage-status-by-unesco/",
+    "Ivindo (UNESCO 28/07/2021, 2e site, ~300 000 ha, chutes de Kongou) : https://www.unesco.org/fr/articles/le-gabon-compte-desormais-un-2eme-site-du-patrimoine-mondial-le-parc-national-de-livindo | https://whc.unesco.org/en/list/1653 | https://www.africanews.com/2021/07/29/gabon-s-ivindo-park-given-world-heritage-status-by-unesco/",
+    "Loango (1 550 km², faune sur les plages, « land of surfing hippos ») : https://en.wikipedia.org/wiki/Loango_National_Park"
+  ],
+  "credits": "Photos : Unsplash (burak cesur, Bernd Dittrich, Brittney Weng, Thomas Bennie, Jakob Owens, Fabrizio Frigeni, Adrián Valverde) — photos d'illustration, non prises dans les parcs cités",
+  "hashtags": "#Gabon #241degres #CultureGabon #NatureGabon #Loango #Ivindo #Lopé #Mayumba #Pongara #pourtoi"
+}

@@ -195,28 +195,6 @@ def tighten(v, words, max_pause=0.22, thr_db=-40):
     return v[keep], [dict(w, t=remap(w["t"])) for w in words]
 
 
-def rise(v, a, b, steps=(2, 4, 6, 8), xf=0.012):
-    """Intonation montante (question) sur v[a:b] : la voix clonée aplatit le « ? » de la synthèse."""
-    import librosa
-    seg = v[a:b].astype(np.float32)
-    if len(seg) < int(0.12 * SR):
-        return v
-    n, x = len(steps), int(xf * SR)
-    bounds = np.linspace(0, len(seg), n + 1).astype(int)
-    out = seg.copy()
-    for k, st in enumerate(steps):
-        if st == 0:
-            continue
-        lo, hi = max(0, bounds[k] - x), bounds[k + 1]
-        sh = librosa.effects.pitch_shift(seg[lo:hi], sr=SR, n_steps=st)
-        ramp = np.ones(hi - lo, np.float32)
-        ramp[: min(x, hi - lo)] = np.linspace(0, 1, min(x, hi - lo))
-        out[lo:hi] = out[lo:hi] * (1 - ramp) + sh * ramp
-    v = v.copy()
-    v[a:b] = out.astype(v.dtype)
-    return v
-
-
 def cue_pauses(v, words, extra=0.35, thr_db=-40):
     """Ajoute une respiration (~0,5 s au total) après « Pourquoi ça compte ? » et « Concrètement, »."""
     hop = int(0.01 * SR)
@@ -232,8 +210,6 @@ def cue_pauses(v, words, extra=0.35, thr_db=-40):
                     s = j
                     break
             cues.append((s / SR, s))
-            if norm(w["w"]) == "compte":
-                v = rise(v, int(w["t"] * SR), min(len(v), s + int(0.03 * SR)))
     if not cues:
         return v, words
     parts, last = [], 0

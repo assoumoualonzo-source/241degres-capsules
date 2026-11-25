@@ -601,7 +601,6 @@ def main(ep_dir):
     voices = [decode(v, radio=bool(ref)) for v in voices]
     for i, v in enumerate(voices):
         voices[i], words_all[i] = tighten(v, words_all[i])
-        voices[i], words_all[i] = cue_pauses(voices[i], words_all[i])
     for v in voices:
         durs.append(round((LEAD + len(v) / SR + TAIL) * FPS) / FPS)
     total = sum(durs)

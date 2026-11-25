@@ -195,6 +195,56 @@ def tighten(v, words, max_pause=0.22, thr_db=-40):
     return v[keep], [dict(w, t=remap(w["t"])) for w in words]
 
 
+def rise(v, a, b, steps=(2, 4, 6, 8), xf=0.012):
+    """Intonation montante (question) sur v[a:b] : la voix clonée aplatit le « ? » de la synthèse."""
+    import librosa
+    seg = v[a:b].astype(np.float32)
+    if len(seg) < int(0.12 * SR):
+        return v
+    n, x = len(steps), int(xf * SR)
+    bounds = np.linspace(0, len(seg), n + 1).astype(int)
+    out = seg.copy()
+    for k, st in enumerate(steps):
+        if st == 0:
+            continue
+        lo, hi = max(0, bounds[k] - x), bounds[k + 1]
+        sh = librosa.effects.pitch_shift(seg[lo:hi], sr=SR, n_steps=st)
+        ramp = np.ones(hi - lo, np.float32)
+        ramp[: min(x, hi - lo)] = np.linspace(0, 1, min(x, hi - lo))
+        out[lo:hi] = out[lo:hi] * (1 - ramp) + sh * ramp
+    v = v.copy()
+    v[a:b] = out.astype(v.dtype)
+    return v
+
+
+def cue_pauses(v, words, extra=0.35, thr_db=-40):
+    """Ajoute une respiration (~0,5 s au total) après « Pourquoi ça compte ? » et « Concrètement, »."""
+    hop = int(0.01 * SR)
+    norm = lambda s: s.lower().strip(" ?,.:;!…")
+    cues = []
+    for k, w in enumerate(words):
+        if (norm(w["w"]) == "compte" and k > 0 and norm(words[k - 1]["w"]) == "ça") or norm(w["w"]) == "concrètement":
+            end = w["t"] + w["d"]
+            # point d'insertion : premier passage silencieux juste après le mot (on ne coupe pas sa fin)
+            s = int(end * SR)
+            for j in range(s, min(len(v) - hop, s + int(0.35 * SR)), hop):
+                if 20 * np.log10(np.sqrt(np.mean(v[j:j + hop] ** 2)) + 1e-12) < thr_db:
+                    s = j
+                    break
+            cues.append((s / SR, s))
+            if norm(w["w"]) == "compte":
+                v = rise(v, int(w["t"] * SR), min(len(v), s + int(0.03 * SR)))
+    if not cues:
+        return v, words
+    parts, last = [], 0
+    for _, s in cues:
+        parts += [v[last:s], np.zeros(int(extra * SR), v.dtype)]
+        last = s
+    parts.append(v[last:])
+    shift = lambda t: t + extra * sum(1 for c, _ in cues if c <= t)
+    return np.concatenate(parts), [dict(w, t=shift(w["t"])) for w in words]
+
+
 def decode(path, radio=False):
     cmd = ["ffmpeg", "-v", "error", "-i", str(path)] + (["-af", RADIO] if radio else [])
     raw = subprocess.run(cmd + ["-f", "s16le", "-ac", "1", "-ar", str(SR), "-"],
@@ -575,6 +625,7 @@ def main(ep_dir):
     voices = [decode(v, radio=bool(ref)) for v in voices]
     for i, v in enumerate(voices):
         voices[i], words_all[i] = tighten(v, words_all[i])
+        voices[i], words_all[i] = cue_pauses(voices[i], words_all[i])
     for v in voices:
         durs.append(round((LEAD + len(v) / SR + TAIL) * FPS) / FPS)
     total = sum(durs)

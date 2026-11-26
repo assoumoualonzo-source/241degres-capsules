@@ -10,3 +10,7 @@ assets/logo/src/
 assets/voix/
 docs/*.mp3
 episodes/*/shots/
+episodes/*/work/
+episodes/*/src.*
+episodes/*/out/transcript.txt
+episodes/*/out/subtitles.txt

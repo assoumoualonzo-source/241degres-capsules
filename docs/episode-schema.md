@@ -29,6 +29,31 @@
 
 Chaque scène a `image` (URL d'une photo libre de droit, portrait de préférence) et `voice` (texte lu). La durée de la scène suit la voix.
 
+## Extrait vidéo (`clip.json`, `pipeline/clip.py`)
+Dossier `episodes/AAAA-MM-JJ-clip-<nom>/` contenant `clip.json` (la vidéo source `src.*` et `work/` restent hors dépôt).
+```json
+{
+  "type": "clip",
+  "date": "26 NOV. 2026",
+  "video": "src.mp4",
+  "video_url": "https://drive.google.com/file/d/<id>/view",
+  "source_url": "lien de la vidéo d'origine (YouTube, Facebook, site du média…)",
+  "start": "12:30.5", "end": "13:05",
+  "speaker": "Prénom Nom", "role": "Fonction exacte",
+  "kicker": "ENTRETIEN", "headline": "« LA PHRASE\nFORTE »", "cover_title": "« LA PHRASE\nFORTE »",
+  "source": "Gabon 24 · 25/11/2026",
+  "question": "Et toi, tu en penses quoi ?",
+  "zoom": 1.15, "cover_at": 0.35,
+  "fix": {"mot mal transcrit": "mot juste"},
+  "title": "…", "hashtags": "…", "sources": ["…"], "credits": "Extrait : <média>"
+}
+```
+- `python3 pipeline/clip.py <dossier> --transcribe` : transcription complète minutée (`out/transcript.txt`) pour choisir `start`/`end`.
+- `--preview` : images de contrôle `out/prev_clip_*.jpg`, `out/prev_end.jpg`, `out/cover.jpg` ; relire `out/subtitles.txt` et corriger les mots mal compris avec `fix`.
+- Sans option : `out/video.mp4` (vignette 1 s + extrait habillé + carton de fin 2,8 s), `cover.jpg`, `post.txt`.
+- `headline` : 2 lignes de 18 caractères max ; `role` : 45 caractères max ; `source` : 35 caractères max.
+- Vidéo verticale (téléphone, TikTok) : plein cadre automatiquement. Vidéo horizontale : bandeau central recadré (`zoom`) sur fond flou.
+
 ## Short BUZZ (`"type": "buzz"`)
 - Dossier `episodes/AAAA-MM-JJ-buzz/`, scènes hook → screen → brief → cta, 20 à 40 s.
 - `cover_title` : titre de la vignette (2 lignes de 14 caractères max).

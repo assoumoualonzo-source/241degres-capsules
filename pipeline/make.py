@@ -57,7 +57,7 @@ def wrap(draw, text, fnt, maxw):
     lines = []
     for para in text.split("\n"):
         cur = ""
-        for w in para.split():
+        for w in para.split(" "):   # espaces insécables gardés (« ? » collé au mot)
             test = (cur + " " + w).strip()
             if draw.textlength(test, font=fnt) <= maxw:
                 cur = test

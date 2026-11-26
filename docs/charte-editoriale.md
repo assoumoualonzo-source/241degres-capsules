@@ -3,7 +3,8 @@
 ## Calendrier
 - **Tous les jours** : une capsule INFO de 5 infos (90–110 s), prête à 18 h, diffusée à 19 h (heure de Libreville).
 - **Un jour sur deux** : une capsule CULTURE (45–75 s) en plus.
-- **Tous les jours** : un short BUZZ (20–40 s), prêt à 12 h 30, diffusé à 13 h (heure de Libreville).
+- **Tous les matins** : la VEILLE VIDÉOS, liste des vidéos de personnalités publiques qui font parler (discours, entretiens, déclarations), envoyée à Stéphane.
+- **Dès que Stéphane dépose un extrait** dans le dossier Drive « 241degres - Clips à traiter » : un short EXTRAIT (20–60 s).
 
 ## Public
 Le Gabonais moyen, pas un spécialiste. Si un élève de 3e ne comprend pas une phrase, on la réécrit.
@@ -16,7 +17,19 @@ Le Gabonais moyen, pas un spécialiste. Si un élève de 3e ne comprend pas une 
 3. **civic** : un réflexe citoyen concret, lié à une des infos.
 4. **cta** : « Abonne-toi pour recevoir nos capsules d'informations chaque jour ! Et dis-nous en commentaire ce que tu penses de ces actualités. »
 
-## Short BUZZ — l'actu chaude ou la publication qui fait le buzz
+## Veille vidéos et shorts EXTRAIT — discours, entretiens, déclarations
+**Veille (chaque matin)** : les vidéos des dernières 24–48 h où un acteur politique ou une personnalité publique gabonaise (président, ministres, opposants, députés, syndicalistes, dirigeants, sportifs, artistes) dit quelque chose qui fait réagir. Sources : Gabon 24, Gabon 1ère, chaînes YouTube et pages des médias gabonais, RFI, France 24, TV5, Jeune Afrique, pages officielles, et les vidéos dont les médias parlent. Pour chaque vidéo : qui, quoi, où (lien), date, pourquoi elle fait parler (reprises dans les médias, vues si elles sont affichées), le passage à extraire avec son minutage s'il est connu, et un titre proposé. On ne présente jamais une estimation de vues comme un chiffre vérifié.
+**Extraction** : Stéphane télécharge ou filme l'extrait et le dépose dans le dossier Drive « 241degres - Clips à traiter » (partagé « tous les utilisateurs disposant du lien »), nommé `AAAA-MM-JJ Nom - Média.mp4`. Il peut ajouter dans la description du fichier, ou dans un fichier texte du même nom, le lien d'origine et le minutage voulu.
+**Le short EXTRAIT** (`pipeline/clip.py`) :
+- Image et son d'origine, sans coupe qui change le sens : on garde la phrase entière et son contexte. Jamais de montage qui fait dire à quelqu'un ce qu'il n'a pas dit.
+- Habillage : étiquette (DISCOURS, ENTRETIEN, DÉCLARATION, DÉBAT), titre = la phrase forte entre guillemets, telle qu'elle est prononcée ; nom et fonction de la personne ; sous-titres mot à mot ; « SOURCE : média · date » à l'écran du début à la fin ; vignette d'ouverture (1 s) et carton de fin (question + abonnement).
+- 20 à 45 s conseillé, 60 s maximum : on cite un passage, on ne republie pas l'émission.
+- Légende : contexte en une ou deux phrases neutres, la source et le lien de la vidéo d'origine.
+- Équilibre : on ne suit pas un camp. Sur la durée, les extraits donnent la parole à la majorité, à l'opposition et à la société civile. Pas de commentaire moqueur ni d'emoji qui juge la personne.
+- Interdits : particuliers filmés à leur insu, mineurs, propos haineux relayés sans recul, vidéos manipulées ou dont l'authenticité est douteuse (dans le doute, on écarte et on le signale à Stéphane), affaires judiciaires sans décision.
+- Droits : courte citation à but d'information, source toujours citée. Si un média ou un auteur demande le retrait, on retire.
+
+## Short BUZZ (format capture d'écran, à la demande)
 Un seul sujet, celui dont tout le monde parle au Gabon depuis 24 h : annonce qui touche le quotidien, publication virale, polémique, exploit, rumeur à vérifier.
 1. **hook** : étiquette « ÇA BUZZE », titre choc en question ou en constat (3 lignes de 10 caractères max), voix de 10 à 15 mots.
 2. **screen** : la capture d'écran de la publication d'origine, avec l'étiquette « SOURCE : MÉDIA OU COMPTE · DATE » à l'écran. La voix dit ce qui est publié ou annoncé (25 à 35 mots).

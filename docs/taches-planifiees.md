@@ -9,13 +9,16 @@
 6. `python3 pipeline/make.py <dossier> --preview` : contrôler les images et la vignette out/cover.jpg (date, logo, 5 infos lisibles, rien de coupé ; champ `cover` de chaque brief), corriger, puis rendu final.
 7. Envoyer `video.mp4`, `cover.jpg` et le texte de `post.txt` à l'utilisateur. Commit et push du JSON et de `post.txt`.
 
-## BUZZ (tous les jours : lancement ~11 h 20, short prêt à 12 h 30, diffusion 13 h, heure de Libreville)
-1. Cloner le dépôt, lire la section « Short BUZZ » de la charte et `docs/episode-schema.md`.
-2. Veille sur l'actu chaude et les publications virales du Gabon des dernières 24 h (médias de la charte, pages officielles, tendances relayées par les médias). Choisir UN sujet, différent des 3 derniers dossiers `*-buzz` et, si possible, de la capsule INFO de la veille.
-3. Vérifier : deux sources ou une source officielle. Rumeur non confirmée : on la traite en « VRAI OU FAUX ? », jamais comme un fait.
-4. Capture de la publication d'origine avec `tools/capture.py`, la regarder et la recadrer si besoin.
-5. Écrire `episodes/AAAA-MM-JJ-buzz/episode.json` (hook, screen, brief, cta ; voix clonée via voice_ref), preview, contrôle, rendu final.
-6. Envoyer `video.mp4`, `cover.jpg`, `post.txt` et la légende (avec le lien de la publication d'origine). Commit et push du JSON et de `post.txt` uniquement.
+## VEILLE VIDÉOS (tous les jours, ~8 h 40 Libreville)
+1. Veille sur les vidéos des dernières 24–48 h (section « Veille vidéos » de la charte).
+2. Envoyer à Stéphane 3 à 5 vidéos classées : qui, quoi, lien, date, pourquoi elle fait parler (preuves), passage et minutage proposés, titre proposé, et un rappel du dossier Drive où déposer les extraits.
+3. Rien à commit.
+
+## EXTRAITS (tous les jours, ~12 h 40 et ~17 h 10 Libreville)
+1. Lister les vidéos du dossier Drive « 241degres - Clips à traiter » (id 1_0fo_fZl7uTtcyscLEZeE_CmIefK87pO) qui n'ont pas encore de dossier `episodes/*-clip-*` avec le même `video_url`.
+2. Pour chacune : `clip.json`, `--transcribe` si pas de minutage, choix du passage (20–45 s, phrase entière), `--preview`, contrôle des images et des sous-titres, rendu final.
+3. Envoyer vidéo, vignette, légende. Commit et push de `clip.json` et `out/post.txt` uniquement.
+4. Aucun fichier nouveau : ne rien envoyer.
 
 ## CULTURE (un jour sur deux, ~11 h 30 Libreville)
 Même chaîne avec `episodes/AAAA-MM-JJ-culture/`. Format tiré de la rotation de la charte, différent des 3 derniers (regarder l'historique des dossiers `*-culture`). Pour un top : scènes `rank` du dernier au premier, hook « TOP 5 … », cta. Classements d'artistes vérifiés le jour même, aucun visuel protégé.

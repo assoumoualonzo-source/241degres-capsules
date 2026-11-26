@@ -9,3 +9,4 @@ assets/logo/*.png
 assets/logo/src/
 assets/voix/
 docs/*.mp3
+episodes/*/shots/

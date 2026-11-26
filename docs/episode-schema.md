@@ -25,8 +25,17 @@
 | civic | kicker, headline (3 lignes courtes), question | réflexe citoyen + question |
 | cta | kicker, headline, sub | abonnement + commentaires |
 | rank | kicker, rank, headline, stat, stat_label | élément de top (culture) |
+| screen | kicker, headline, shot, source | capture d'écran créditée d'une publication (short BUZZ) ; `image` facultative (sinon fond flou tiré de la capture) |
 
 Chaque scène a `image` (URL d'une photo libre de droit, portrait de préférence) et `voice` (texte lu). La durée de la scène suit la voix.
+
+## Short BUZZ (`"type": "buzz"`)
+- Dossier `episodes/AAAA-MM-JJ-buzz/`, scènes hook → screen → brief → cta, 20 à 40 s.
+- `cover_title` : titre de la vignette (2 lignes de 14 caractères max).
+- `shot` : chemin relatif au dossier de l'épisode (ex. `shots/01.png`), produit par
+  `python3 tools/capture.py URL <dossier>/shots/01.png --above 10 --height 220` (ajuster pour garder le titre, la date et le nom du média, sans pub ni pop-up).
+  Les captures ne sont pas versionnées (`episodes/*/shots/` dans .gitignore).
+- `source` : « Média ou @compte · JJ/MM/AAAA » (35 caractères max), affiché en « SOURCE : … ».
 
 ## Règles de mise en page
 - Titres : 2 lignes de 14 caractères max (3 lignes de 10 max pour civic).

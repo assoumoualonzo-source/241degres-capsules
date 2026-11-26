@@ -1,0 +1,50 @@
+{
+  "type": "buzz",
+  "date": "26 NOV. 2026",
+  "title": "Carburant : l'aide de l'État à la pompe pourrait s'arrêter en janvier 2027 #ÇaBuzze",
+  "cover_title": "CARBURANT :\nFIN DE L'AIDE ?",
+  "voice": "fr-FR-HenriNeural",
+  "rate": "+5%",
+  "voice_ref": "assets/voix/stephane_se.json",
+  "scenes": [
+    {
+      "kind": "hook",
+      "image": "https://images.unsplash.com/photo-1709536240391-fa5b06a756d3?w=1400&q=80",
+      "kicker": "ÇA BUZZE",
+      "headline": "CARBURANT :\nL'AIDE VA\nSAUTER ?",
+      "voice": "Le prix du carburant pourrait bouger en janvier. Tout le monde en parle."
+    },
+    {
+      "kind": "screen",
+      "shot": "shots/01.png",
+      "source": "Gabonreview · 26/11/2026",
+      "kicker": "CE QUI EST ANNONCÉ",
+      "headline": "FIN DE L'AIDE\nAU 1ER JANVIER ?",
+      "voice": "Le gouvernement envisage d'arrêter son aide au prix à la pompe dès le 1er janvier 2027. Cette aide coûte à l'État 35 milliards de francs CFA par mois.",
+      "image": "https://images.unsplash.com/photo-1591179535738-0fe38055847b?w=1400&q=80"
+    },
+    {
+      "kind": "brief",
+      "image": "https://images.unsplash.com/photo-1785094166364-c74a35e64cab?w=1400&q=80",
+      "kicker": "VRAI OU FAUX ?",
+      "headline": "CE QU'ON SAIT\nVRAIMENT",
+      "problem": "Rien n'est décidé : la mesure est « envisagée »",
+      "clear": "Promis : bus CNT moins chers, aide au transport des denrées",
+      "voice": "Attention : rien n'est encore décidé. Pour amortir le choc, l'État promet des bus de la CNT moins chers et un soutien au transport des produits de base."
+    },
+    {
+      "kind": "cta",
+      "image": "https://images.unsplash.com/photo-1674212943761-167b76c22c13?w=1400&q=80",
+      "kicker": "ABONNE-TOI",
+      "headline": "@241degres",
+      "sub": "Ton avis en commentaire !",
+      "voice": "Et toi, tu en penses quoi ? Dis-le en commentaire, et abonne-toi pour ne rien rater !"
+    }
+  ],
+  "sources": [
+    "Capture : Gabonreview, « Gabon : la fin des subventions aux carburants programmée au 1er janvier 2027 », 26/11/2026 : https://www.gabonreview.com/gabon-la-fin-des-subventions-aux-carburants-programmee-au-1er-janvier-2027/",
+    "Confirmation : APA (revue de presse allAfrica du 26/11/2026) : https://fr.allafrica.com/stories/202611260215.html"
+  ],
+  "credits": "Photos : Unsplash (engin akyurt, Wassim Chouak, Fahd Aminu, burak cesur). Capture d'écran : Gabonreview.",
+  "hashtags": "#Gabon #Libreville #241degres #ÇaBuzze #ActuGabon #pourtoi #Carburant #PrixDuCarburant"
+}

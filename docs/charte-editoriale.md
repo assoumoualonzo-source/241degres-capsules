@@ -3,6 +3,7 @@
 ## Calendrier
 - **Tous les jours** : une capsule INFO de 5 infos (90–110 s), prête à 18 h, diffusée à 19 h (heure de Libreville).
 - **Un jour sur deux** : une capsule CULTURE (45–75 s) en plus.
+- **Tous les jours** : un short BUZZ (20–40 s), prêt à 12 h 30, diffusé à 13 h (heure de Libreville).
 
 ## Public
 Le Gabonais moyen, pas un spécialiste. Si un élève de 3e ne comprend pas une phrase, on la réécrit.
@@ -14,6 +15,18 @@ Le Gabonais moyen, pas un spécialiste. Si un élève de 3e ne comprend pas une 
    - Infos 2 à 5 : les plus « chaudes » des dernières 24 à 48 h (celles dont tout le monde parle, qui touchent le quotidien).
 3. **civic** : un réflexe citoyen concret, lié à une des infos.
 4. **cta** : « Abonne-toi pour recevoir nos capsules d'informations chaque jour ! Et dis-nous en commentaire ce que tu penses de ces actualités. »
+
+## Short BUZZ — l'actu chaude ou la publication qui fait le buzz
+Un seul sujet, celui dont tout le monde parle au Gabon depuis 24 h : annonce qui touche le quotidien, publication virale, polémique, exploit, rumeur à vérifier.
+1. **hook** : étiquette « ÇA BUZZE », titre choc en question ou en constat (3 lignes de 10 caractères max), voix de 10 à 15 mots.
+2. **screen** : la capture d'écran de la publication d'origine, avec l'étiquette « SOURCE : MÉDIA OU COMPTE · DATE » à l'écran. La voix dit ce qui est publié ou annoncé (25 à 35 mots).
+3. **brief** : « VRAI OU FAUX ? » / « CE QU'ON SAIT VRAIMENT » : ce qui est confirmé, ce qui ne l'est pas, ce que ça change pour toi (25 à 35 mots).
+4. **cta** court : « Et toi, tu en penses quoi ? Dis-le en commentaire, et abonne-toi pour ne rien rater ! »
+- Vignette : grand titre (`cover_title`), pastille ÇA BUZZE, la capture et sa source.
+- Vérification : le buzz est confirmé par **deux sources** (dont la publication d'origine) ou par une source officielle. Si c'est une rumeur, on le dit clairement (« FAUX » ou « PAS CONFIRMÉ ») : on ne relaie jamais une rumeur comme un fait.
+- Captures d'écran (`tools/capture.py`) : uniquement des publications de **médias, d'institutions, de personnalités publiques ou d'entreprises** (articles, communiqués, posts publics). Jamais la publication d'un particulier, jamais un mineur, jamais de contenu choquant. Le nom du média ou du compte et la date sont **toujours** à l'écran et dans la légende.
+- On ne retélécharge jamais la vidéo d'un autre compte. Pour une vidéo virale, on montre une capture créditée du post et on donne son lien dans la légende ; Stéphane peut aussi faire un Stitch ou un Duo TikTok, qui crédite l'auteur automatiquement.
+- Mêmes interdits que la capsule INFO : pas de fait divers sordide, pas d'affaire judiciaire sans décision, pas d'attaque contre une personne.
 
 ## Ton
 - Tutoiement, phrases de moins de 15 mots, vocabulaire de la rue et du marché.

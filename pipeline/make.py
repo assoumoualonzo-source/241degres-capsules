@@ -399,7 +399,7 @@ class Scene:
         k = sc["kind"]
         self.kicker = pill(sc["kicker"], RED if k == "alert" else (GREEN if k in ("civic", "cta") else YELLOW),
                            WHITE if k in ("alert", "civic", "cta") else BLACK)
-        size = {"hook": 170, "cta": 170, "civic": 130, "brief": 104}.get(k, 122)
+        size = {"hook": 170, "cta": 170, "civic": 130, "brief": 104, "screen": 100}.get(k, 122)
         self.head = text_layer(sc.get("headline", ""), ANTON(size), WHITE, maxw=960, spacing=0.86)
         self.head_lines = [text_layer(l, ANTON(size), WHITE, maxw=960, spacing=0.86) for l in sc.get("headline", "").split("\n")]
         if "stat" in sc:
@@ -421,6 +421,9 @@ class Scene:
             self.bul = [bullet(b, j == len(sc["bullets"]) - 1) for j, b in enumerate(sc["bullets"])]
         if k == "civic":
             self.q = card("TA RÉPONSE EN COMMENTAIRE", sc["question"], YELLOW)
+        if k == "screen":
+            self.shot = shot_layer(ep_dir / sc["shot"], 940, 560)
+            self.src = pill("SOURCE : " + sc["source"].upper(), WHITE, BLACK, 40)
         if k == "cta":
             self.logo = logo_layer(400)
             self.btn = pill("  ABONNE-TOI  ", RED, WHITE, 64)
@@ -481,6 +484,13 @@ class Scene:
             paste(fr, self.c1, 80, 430 + 120 * (1 - ease_out((t - 0.2) / 0.4)), ease_out((t - 0.2) / 0.3))
             t2 = self.dur * 0.5
             paste(fr, self.c2, 80, 470 + self.c1.height + 120 * (1 - ease_out((t - t2) / 0.4)), ease_out((t - t2) / 0.3))
+        elif k == "screen":
+            paste(fr, self.head, 60, top + 90 + 80 * (1 - ease_out((t - 0.1) / 0.4)), ease_out((t - 0.1) / 0.3))
+            y = top + 130 + self.head.height
+            ts = 0.35
+            z = 0.92 + 0.08 * back_out((t - ts) / 0.45) + 0.02 * p   # pop puis léger zoom continu
+            paste(fr, self.shot, (W - self.shot.width) / 2, y, ease_out((t - ts) / 0.3), z)
+            paste(fr, self.src, (W - self.src.width) / 2, y + self.shot.height + 30, ease_out((t - ts - 0.4) / 0.3))
         elif k == "civic":
             y = top + 110
             for j, l in enumerate(self.head_lines):
@@ -510,6 +520,34 @@ class Scene:
             fl = Image.new("RGBA", (W, H), (255, 255, 255, int(200 * (1 - t / 0.18))))
             fr.alpha_composite(fl)
         return fr.convert("RGB")
+
+
+def shot_layer(path, maxw, maxh):
+    """Capture d'écran dans un cadre blanc arrondi avec ombre (scènes screen et vignette BUZZ)."""
+    im = Image.open(path).convert("RGB")
+    s_ = min(maxw / im.width, maxh / im.height)
+    im = im.resize((int(im.width * s_), int(im.height * s_)), Image.LANCZOS).convert("RGBA")
+    pad, r = 14, 26
+    frame = Image.new("RGBA", (im.width + 2 * pad, im.height + 2 * pad), (0, 0, 0, 0))
+    ImageDraw.Draw(frame).rounded_rectangle((0, 0, frame.width - 1, frame.height - 1), radius=r, fill=WHITE)
+    m = Image.new("L", im.size, 0)
+    ImageDraw.Draw(m).rounded_rectangle((0, 0, im.width - 1, im.height - 1), radius=r - 8, fill=255)
+    im.putalpha(m)
+    frame.alpha_composite(im, (pad, pad))
+    out = Image.new("RGBA", (frame.width + 60, frame.height + 60), (0, 0, 0, 0))
+    out.paste((0, 0, 0, 150), (30, 40), frame.split()[3])
+    out = out.filter(ImageFilter.GaussianBlur(14))
+    out.alpha_composite(frame, (30, 30))
+    return out
+
+
+def shot_background(shot, dest):
+    """Fond flou tiré de la capture quand la scène screen n'a pas d'image Unsplash."""
+    im = Image.open(shot).convert("RGB")
+    s_ = max(W / im.width, H / im.height) * 1.2
+    im = im.resize((int(im.width * s_) + 1, int(im.height * s_) + 1), Image.LANCZOS)
+    x0, y0 = (im.width - W) // 2, (im.height - H) // 2
+    im.crop((x0, y0, x0 + W, y0 + H)).filter(ImageFilter.GaussianBlur(28)).save(dest, quality=90)
 
 
 def bullet(text, ok):
@@ -629,6 +667,55 @@ def make_cover(ep_dir, scenes):
     img.convert("RGB").save(ep_dir / "out" / "cover.jpg", quality=93)
 
 
+def make_cover_buzz(ep_dir, scenes):
+    """Vignette d'un short BUZZ (un seul sujet) : logo, date, pastille ÇA BUZZE, gros titre, capture créditée."""
+    import datetime
+    scr = next((s_ for s_ in scenes if s_["kind"] == "screen"), None)
+    bg_idx = scenes.index(scr) if scr and scr.get("image") else 0
+    src = cv2.cvtColor(cv2.imread(str(ep_dir / "img" / f"{bg_idx:02d}.jpg")), cv2.COLOR_BGR2RGB)
+    h0, w0 = src.shape[:2]
+    sc_ = max(W / w0, H / h0)
+    src = cv2.resize(src, (int(w0 * sc_) + 1, int(h0 * sc_) + 1), interpolation=cv2.INTER_AREA)
+    y0, x0 = (src.shape[0] - H) // 2, (src.shape[1] - W) // 2
+    img = Image.fromarray(src[y0:y0 + H, x0:x0 + W]).convert("RGBA")
+    img.alpha_composite(Image.new("RGBA", (W, H), (5, 12, 24, 120)))
+    d = ImageDraw.Draw(img)
+    for i, c in enumerate((GREEN, YELLOW, BLUE)):
+        d.rectangle((i * W / 3, 0, (i + 1) * W / 3, 22), fill=c)
+        d.rectangle((i * W / 3, H - 22, (i + 1) * W / 3, H), fill=c)
+    logo = logo_layer(150)
+    plate = Image.new("RGBA", (logo.width + 32, logo.height + 32), (0, 0, 0, 0))
+    ImageDraw.Draw(plate).rounded_rectangle((0, 0, plate.width - 1, plate.height - 1), radius=44, fill=(255, 255, 255, 235))
+    plate.alpha_composite(logo, (16, 16))
+    img.alpha_composite(plate, ((W - plate.width) // 2, 250))
+    y = 250 + plate.height + 26
+    try:
+        dt = datetime.date.fromisoformat(ep_dir.name[:10])
+        mois = ["JANV.", "FÉVR.", "MARS", "AVRIL", "MAI", "JUIN", "JUIL.", "AOÛT", "SEPT.", "OCT.", "NOV.", "DÉC."]
+        date_txt = f"{JOURS[dt.weekday()]} {dt.day} {mois[dt.month - 1]} {dt.year}"
+    except ValueError:
+        date_txt = EP["date"]
+    row = [pill("ÇA BUZZE", RED, WHITE, 46), pill(date_txt, YELLOW, BLACK, 46)]
+    tw = sum(r.width for r in row) + 20
+    x = (W - tw) // 2
+    for r in row:
+        img.alpha_composite(r, (x, y))
+        x += r.width + 20
+    y += row[0].height + 24
+    t = text_layer(EP.get("cover_title", "ÇA BUZZE"), ANTON(150), WHITE, maxw=1000, spacing=0.86, align="center")
+    img.alpha_composite(t, ((W - t.width) // 2, y))
+    y += t.height + 30
+    if scr:
+        sh = shot_layer(ep_dir / scr["shot"], 900, min(560, 1560 - y)).rotate(-2, resample=Image.BICUBIC, expand=True)
+        img.alpha_composite(sh, ((W - sh.width) // 2, y))
+        y += sh.height + 6
+        sp = pill("SOURCE : " + scr["source"].upper(), WHITE, BLACK, 38)
+        img.alpha_composite(sp, ((W - sp.width) // 2, min(y, 1620)))
+    hd = text_layer("@241degres", MONT(50, "Black"), WHITE, maxw=900, align="center")
+    img.alpha_composite(hd, ((W - hd.width) // 2, 1720))
+    img.convert("RGB").save(ep_dir / "out" / "cover.jpg", quality=93)
+
+
 LEAD, TAIL = 0.15, 0.30
 COVER_DUR = 1.0
 EP = {}
@@ -644,7 +731,10 @@ def main(ep_dir):
     # 1. images + voix
     durs, words_all, voices = [], [], []
     for i, sc in enumerate(scenes):
-        download(sc["image"], ep_dir / "img" / f"{i:02d}.jpg")
+        if sc.get("image"):
+            download(sc["image"], ep_dir / "img" / f"{i:02d}.jpg")
+        else:   # scène screen sans photo : fond flou tiré de la capture
+            shot_background(ep_dir / sc["shot"], ep_dir / "img" / f"{i:02d}.jpg")
         mp3, wj = ep_dir / "audio" / f"{i:02d}.mp3", ep_dir / "audio" / f"{i:02d}.json"
         if not mp3.exists() or mp3.stat().st_size < 1000:
             asyncio.run(_tts(sc["voice"], EP.get("voice", "fr-FR-HenriNeural"), EP.get("rate", "+0%"), mp3, wj))
@@ -665,7 +755,7 @@ def main(ep_dir):
         durs.append(round((LEAD + len(v) / SR + TAIL) * FPS) / FPS)
     total = sum(durs)
     print(f"Durée totale : {total:.1f} s")
-    make_cover(ep_dir, scenes)
+    (make_cover_buzz if EP.get("type") == "buzz" else make_cover)(ep_dir, scenes)
     # 2. vidéo, une scène = un fichier
     offset, files = 0.0, []
     for i, sc in enumerate(scenes):

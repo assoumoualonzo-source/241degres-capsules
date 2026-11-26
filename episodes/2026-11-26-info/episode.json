@@ -1,0 +1,92 @@
+{
+  "type": "info",
+  "date": "26 NOV. 2026",
+  "title": "Oligui Nguema fait le point, fin de l'aide au carburant, loi sur la grève, parquet financier, Marga AI : les infos du jour",
+  "voice": "fr-FR-HenriNeural",
+  "rate": "+5%",
+  "voice_ref": "assets/voix/stephane_se.json",
+  "scenes": [
+    {
+      "kind": "hook",
+      "image": "https://images.unsplash.com/photo-1674212943761-167b76c22c13?w=1400&q=80",
+      "kicker": "ACTU GABON",
+      "headline": "LES INFOS\nDU JOUR",
+      "voice": "Les infos du jour au Gabon. On t'explique."
+    },
+    {
+      "kind": "brief",
+      "image": "https://images.unsplash.com/photo-1785094165691-643aa8db87ca?w=1400&q=80",
+      "kicker": "1 · CHEF DE L'ÉTAT",
+      "headline": "OLIGUI NGUEMA\nFAIT LE POINT",
+      "problem": "325 bâtiments inachevés le long des grands axes de Libreville",
+      "clear": "Routes élargies, CNAMGS : suite au prochain Conseil",
+      "voice": "Première info, le chef de l'État. Mercredi, Brice Clotaire Oligui Nguema a fait le point avec le vice-président du gouvernement, Hermann Immongault. Au menu : les bâtiments inachevés le long des grandes routes de Libreville, l'élargissement des voies contre les embouteillages, et la C N A M G S. Des propositions seront étudiées au prochain Conseil des ministres.",
+      "cover": "OLIGUI NGUEMA FAIT LE POINT"
+    },
+    {
+      "kind": "brief",
+      "image": "https://images.unsplash.com/photo-1563861466017-a0a26c16bb08?w=1400&q=80",
+      "kicker": "2 · TON PORTEFEUILLE",
+      "headline": "CARBURANT :\nFIN DE L'AIDE ?",
+      "problem": "L'aide au prix à la pompe coûte 35 milliards FCFA par mois",
+      "clear": "Fin envisagée en janvier 2027, bus CNT moins chers",
+      "voice": "Deuxième info, ton portefeuille. Aujourd'hui, l'État paie une partie du prix du carburant à la pompe. Ça lui coûte 35 milliards de francs CFA chaque mois. Le gouvernement envisage d'arrêter cette aide dès le 1er janvier 2027. Pour amortir le choc, il promet des bus de la CNT moins chers. Rien n'est encore décidé.",
+      "cover": "CARBURANT : FIN DE L'AIDE ?"
+    },
+    {
+      "kind": "brief",
+      "image": "https://images.unsplash.com/photo-1776294285771-58216da8b3c2?w=1400&q=80",
+      "kicker": "3 · TON TRAVAIL",
+      "headline": "DROIT DE GRÈVE :\nLA LOI DÉBATTUE",
+      "problem": "Service minimum, négociation obligatoire avant la grève",
+      "clear": "Syndicats contre, le ministère se dit ouvert aux changements",
+      "voice": "Troisième info, ton travail. Le gouvernement prépare une nouvelle loi sur la grève. Le préavis de dix jours reste. Mais il faudra un service minimum, plus fort dans les secteurs essentiels, et tenter la négociation avant d'arrêter le travail. Des syndicats, comme celui du pétrole, demandent le retrait du texte. Le ministère dit rester ouvert.",
+      "cover": "DROIT DE GRÈVE : LOI CONTESTÉE"
+    },
+    {
+      "kind": "brief",
+      "image": "https://images.unsplash.com/photo-1788784519586-0a14c5b55f0a?w=1400&q=80",
+      "kicker": "4 · CORRUPTION",
+      "headline": "VERS UN PARQUET\nFINANCIER",
+      "problem": "Des juges spécialisés contre les vols d'argent public",
+      "clear": "Atelier à Libreville : pas encore de décision officielle",
+      "voice": "Quatrième info, l'argent public. Le Gabon réfléchit à créer un parquet financier : des juges spécialisés contre la corruption et les détournements d'argent public. Un atelier se tient à Libreville ces 25 et 26 novembre, avec l'appui de la France. Attention : ce n'est pas encore une décision officielle. Aucun texte ne le crée pour l'instant.",
+      "cover": "VERS UN PARQUET FINANCIER"
+    },
+    {
+      "kind": "brief",
+      "image": "https://images.unsplash.com/photo-1761370571806-886404629697?w=1400&q=80",
+      "kicker": "5 · BONNE NOUVELLE",
+      "headline": "MARGA AI :\n2E EN AFRIQUE",
+      "problem": "Les petits commerçants perdent le fil de leurs ventes et crédits",
+      "clear": "Une appli gabonaise via WhatsApp pour tout noter",
+      "voice": "Cinquième info, une bonne nouvelle. La start-up gabonaise Marga AI a fini deuxième d'un concours africain d'innovation. Son outil aide les petits commerçants, par WhatsApp ou une appli, à noter leurs ventes et à suivre les crédits de leurs clients. Elle avait déjà gagné le concours national. Le ministre du Numérique l'a reçue lundi.",
+      "cover": "MARGA AI 2E EN AFRIQUE"
+    },
+    {
+      "kind": "civic",
+      "image": "https://images.unsplash.com/photo-1674212943761-167b76c22c13?w=1400&q=80",
+      "kicker": "LE RÉFLEXE CITOYEN",
+      "headline": "LIS LE\nTEXTE\nAVANT.",
+      "question": "Loi sur la grève : demande à ton syndicat ce qui change pour toi",
+      "voice": "Le réflexe citoyen du jour : avant de partager une rumeur sur la loi sur la grève, renseigne-toi. Demande à ton syndicat ou à tes délégués ce que le texte change vraiment pour toi."
+    },
+    {
+      "kind": "cta",
+      "image": "https://images.unsplash.com/photo-1674212943761-167b76c22c13?w=1400&q=80",
+      "kicker": "ABONNE-TOI",
+      "headline": "@241degres",
+      "sub": "Ton avis en commentaire !",
+      "voice": "Abonne-toi pour recevoir nos capsules d'informations chaque jour ! Et dis-nous en commentaire ce que tu penses de ces actualités."
+    }
+  ],
+  "sources": [
+    "Point Oligui Nguema - Immongault : https://gabonmediatime.com/reformes-prioritaires-et-grands-chantiers-oligui-nguema-fait-le-point-avec-herman-immongault-et-linarch/ | https://www.m.gabonews.com/fr/actus/politique/article/mise-en-oeuvre-de-projets-structurants-le-vice",
+    "Subventions carburant : https://www.gabonreview.com/gabon-la-fin-des-subventions-aux-carburants-programmee-au-1er-janvier-2027/ | https://fr.allafrica.com/stories/202611260215.html (APA)",
+    "Loi sur la grève : https://www.gabonreview.com/droit-de-greve-le-ministere-du-travail-mise-sur-le-dialogue-et-la-pedagogie-pour-clarifier-sa-reforme/ | https://fr.infosgabon.com/gabon-le-projet-de-loi-sur-la-greve-provoque-la-colere-du-syndicat-petrolier-seerpac/",
+    "Parquet financier : https://fr.infosgabon.com/gabon-la-creation-dun-parquet-financier-a-lepreuve-des-exigences-de-la-lutte-anticorruption/ | https://www.gabonreview.com/gabon-vers-un-parquet-financier-specialise-contre-la-corruption-et-les-detournements-de-fonds/",
+    "Marga AI : https://www.gabonreview.com/marga-ai-une-start-up-gabonaise-sur-le-podium-de-linnovation-africaine/ | https://fr.infosgabon.com/marga-ai-le-pari-gabonais-de-linnovation-numerique-recompense-a-lechelle-africaine/"
+  ],
+  "credits": "Photos : Unsplash (burak cesur, Fahd Aminu, Wesley Tingey, Ross Sneddon, Chris Bischoff, Muhammad-Taha Ibrahim)",
+  "hashtags": "#Gabon #Libreville #241degres #ActuGabon #InfoGabon #pourtoi #OliguiNguema #Carburant #DroitDeGrève #MargaAI"
+}

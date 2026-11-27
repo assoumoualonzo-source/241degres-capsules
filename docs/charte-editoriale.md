@@ -73,6 +73,8 @@ Modèle : `episodes/2026-11-27-culture/episode.json` (inspiré du short BUZZ).
 - **Vignette** : style short (`cover_style: "short"`, pastille verte CULTURE, gros titre, photo de l'article et sa source).
 - **Vérification** : faits et chiffres lus le jour même dans l'article ; deux médias de préférence. Si une seule source (annonce d'organisateur relayée par un média), le signaler à Stéphane. Si l'orthographe d'un nom ou d'un titre diffère entre deux sources, on ne l'écrit pas.
 - **Photos d'articles** : autorisées, toujours avec la source à l'écran (« SOURCE : MÉDIA · DATE ») et dans la légende. Préférer les photos officielles (organisateur, institution). Si un média ou un photographe demande le retrait, on retire.
+- **Pertinence** : à chaque scène, l'image montre ce dont parle la voix (un chœur quand on parle d'un concert de chœur, l'artiste quand on parle de l'artiste). Une photo d'article qui ne montre pas le sujet (conférence de presse, tribune officielle, logo) n'est pas utilisée. Une photo générique est signalée « Photo d'illustration · Unsplash ».
+- **Source à l'écran** : petite pastille (taille 26), lisible mais discrète.
 - **Image** : rendu 4K (2160×3840), fonds lumineux (pas de voile sombre), photos d'ambiance Unsplash demandées en grande taille.
 - **Prononciation** (champ `voice`) : Mayumba se dit « Mayoumba » ; Ivindo, « in » comme dans « cuisine ».
 

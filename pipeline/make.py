@@ -467,7 +467,7 @@ class Scene:
             self.q = card("TA RÉPONSE EN COMMENTAIRE", sc["question"], YELLOW)
         if k == "screen":
             self.shot = shot_layer(ep_dir / sc["shot"], 940, 430)   # la source reste au-dessus des sous-titres (y 1390)
-            self.src = pill("SOURCE : " + sc["source"].upper(), WHITE, BLACK, 40)
+            self.src = pill("SOURCE : " + sc["source"].upper(), WHITE, BLACK, 26)
         if k == "cta":
             self.logo = logo_layer(400)
             self.btn = pill("  ABONNE-TOI  ", RED, WHITE, 64)
@@ -751,7 +751,7 @@ def make_cover_buzz(ep_dir, scenes):
         sh = shot_layer(ep_dir / scr["shot"], 900, min(560, 1560 - y)).rotate(-2, resample=Image.BICUBIC, expand=True)
         img.alpha_composite(sh, ((W - sh.width) // 2, y))
         y += sh.height + 6
-        sp = pill("SOURCE : " + scr["source"].upper(), WHITE, BLACK, 38)
+        sp = pill("SOURCE : " + scr["source"].upper(), WHITE, BLACK, 26)
         img.alpha_composite(sp, ((W - sp.width) // 2, min(y, 1620)))
     hd = text_layer("@241degres", MONT(50, "Black"), WHITE, maxw=900, align="center")
     img.alpha_composite(hd, ((W - hd.width) // 2, 1720))

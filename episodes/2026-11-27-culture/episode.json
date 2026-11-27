@@ -3,10 +3,10 @@
   "cover_style": "short",
   "cover_pill": "CULTURE",
   "cover_pill_color": "green",
-  "cover_image_scene": 0,
+  "cover_image_scene": 2,
   "date": "27 NOV. 2026",
   "title": "Ce soir à Libreville : Carmina Burana chanté pour la première fois au Gabon 🎶 Et demain, Adriana Bignagni Lesca à l'IFG",
-  "cover_title": "CE SOIR :\nCARMINA BURANA",
+  "cover_title": "CE WEEK-END :\nCHANT LYRIQUE",
   "voice": "fr-FR-HenriNeural",
   "rate": "+5%",
   "scenes": [
@@ -15,13 +15,11 @@
       "image": "https://images.unsplash.com/photo-1482627988233-7c68311232ea?w=2400&q=85",
       "kicker": "CULTURE",
       "headline": "CE SOIR :\nUNE 1RE\nAU GABON",
-      "voice": "Ce soir à Libreville, une grande première au Gabon. On t'explique.",
-      "credit": "PHOTO D'ILLUSTRATION"
+      "voice": "Ce soir à Libreville, une grande première au Gabon. On t'explique."
     },
     {
       "kind": "screen",
       "shot": "shots/01.jpg",
-      "source": "Photo d'illustration · Unsplash",
       "kicker": "VENDREDI 27",
       "headline": "CARMINA BURANA\nCHANTÉ ICI",
       "voice": "Ce vendredi à 19 heures, les 45 choristes d'À Cœur Joie Gabon chantent Carmina Burana, de Carl Orff. C'est la toute première fois dans le pays.",
@@ -58,5 +56,6 @@
     "Photo et infos (samedi 28, tarifs) : Gabon Media Time, « IFG : la Gabonaise Adriana Bignagni en prestation ce 28 novembre », 13/11/2026 : https://gabonmediatime.com/ifg-la-gabonaise-adriana-bignagni-en-prestation-ce-28-novembre/"
   ],
   "credits": "Photo de l'article : Gabon Media Time (Adriana Bignagni Lesca). Photos d'illustration : Unsplash (David Beale, Manuel Luikenga, burak cesur).",
-  "hashtags": "#Gabon #Libreville #241degres #CultureGabon #CarminaBurana #MusiqueClassique #InstitutFrançais #pourtoi"
+  "hashtags": "#Gabon #Libreville #241degres #CultureGabon #CarminaBurana #MusiqueClassique #InstitutFrançais #pourtoi",
+  "cover_shot_scene": 2
 }

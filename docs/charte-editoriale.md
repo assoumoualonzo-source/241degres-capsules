@@ -32,7 +32,7 @@ Le Gabonais moyen, pas un spécialiste. Si un élève de 3e ne comprend pas une 
 ## Short BUZZ (format capture d'écran, à la demande)
 Un seul sujet, celui dont tout le monde parle au Gabon depuis 24 h : annonce qui touche le quotidien, publication virale, polémique, exploit, rumeur à vérifier.
 1. **hook** : étiquette « ÇA BUZZE », titre choc en question ou en constat (3 lignes de 10 caractères max), voix de 10 à 15 mots.
-2. **screen** : la capture d'écran de la publication d'origine, avec l'étiquette « SOURCE : MÉDIA OU COMPTE · DATE » à l'écran. La voix dit ce qui est publié ou annoncé (25 à 35 mots).
+2. **screen** : la capture d'écran de la publication d'origine, avec « Photo : média ou compte · date » en très petit en haut à droite. La voix dit ce qui est publié ou annoncé (25 à 35 mots).
 3. **brief** : « VRAI OU FAUX ? » / « CE QU'ON SAIT VRAIMENT » : ce qui est confirmé, ce qui ne l'est pas, ce que ça change pour toi (25 à 35 mots).
 4. **cta** court : « Et toi, tu en penses quoi ? Dis-le en commentaire, et abonne-toi pour ne rien rater ! »
 - Vignette : grand titre (`cover_title`), pastille ÇA BUZZE, la capture et sa source.
@@ -72,9 +72,9 @@ Modèle : `episodes/2026-11-27-culture/episode.json` (inspiré du short BUZZ).
 - **Structure** : hook (étiquette CULTURE, 3 lignes de 10 caractères max) → 1 ou 2 scènes `screen` avec la photo de l'article ou une capture, et la source à l'écran → `brief` PRATIQUE (date, lieu, prix) → cta « Tu y vas ? / Ton avis en commentaire ».
 - **Vignette** : style short (`cover_style: "short"`, pastille verte CULTURE, gros titre, photo de l'article et sa source).
 - **Vérification** : faits et chiffres lus le jour même dans l'article ; deux médias de préférence. Si une seule source (annonce d'organisateur relayée par un média), le signaler à Stéphane. Si l'orthographe d'un nom ou d'un titre diffère entre deux sources, on ne l'écrit pas.
-- **Photos d'articles** : autorisées, toujours avec la source à l'écran (« SOURCE : MÉDIA · DATE ») et dans la légende. Préférer les photos officielles (organisateur, institution). Si un média ou un photographe demande le retrait, on retire.
-- **Pertinence** : à chaque scène, l'image montre ce dont parle la voix (un chœur quand on parle d'un concert de chœur, l'artiste quand on parle de l'artiste). Une photo d'article qui ne montre pas le sujet (conférence de presse, tribune officielle, logo) n'est pas utilisée. Une photo générique est signalée « Photo d'illustration · Unsplash ».
-- **Source à l'écran** : petite pastille (taille 26), lisible mais discrète.
+- **Photos d'articles** : autorisées et recherchées quand elles montrent le sujet (l'artiste, l'œuvre, le lieu). Source indiquée dans la légende. Les questions de droits et de retrait sont gérées par Stéphane.
+- **Pertinence** : à chaque scène, l'image montre ce dont parle la voix (un chœur quand on parle d'un concert de chœur, l'artiste quand on parle de l'artiste). Une photo d'article qui ne montre pas le sujet (conférence de presse, tribune officielle, logo) n'est pas utilisée. Quand on parle d'un artiste, on montre l'artiste (photo de l'article) et on la met sur la vignette (`cover_shot_scene`).
+- **Source à l'écran** : pas de bandeau. Seulement pour une image de média : « Photo : Média · date » en très petit en haut à droite (et en bas à droite sur la vignette). Rien pour une photo Unsplash.
 - **Image** : rendu 4K (2160×3840), fonds lumineux (pas de voile sombre), photos d'ambiance Unsplash demandées en grande taille.
 - **Prononciation** (champ `voice`) : Mayumba se dit « Mayoumba » ; Ivindo, « in » comme dans « cuisine ».
 

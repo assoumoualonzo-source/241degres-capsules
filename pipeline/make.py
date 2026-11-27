@@ -466,8 +466,7 @@ class Scene:
         if k == "civic":
             self.q = card("TA RÉPONSE EN COMMENTAIRE", sc["question"], YELLOW)
         if k == "screen":
-            self.shot = shot_layer(ep_dir / sc["shot"], 940, 430)   # la source reste au-dessus des sous-titres (y 1390)
-            self.src = pill("SOURCE : " + sc["source"].upper(), WHITE, BLACK, 26)
+            self.shot = shot_layer(ep_dir / sc["shot"], 960, 560)   # reste au-dessus des sous-titres (y 1390)
         if k == "cta":
             self.logo = logo_layer(400)
             self.btn = pill("  ABONNE-TOI  ", RED, WHITE, 64)
@@ -475,7 +474,9 @@ class Scene:
         self.brand = logo_layer(124)
         self.date = text_layer(EP["date"], MONT(36, "Bold"), WHITE, maxw=500)
         # crédit photo à l'écran (photos d'articles : « PHOTO : MÉDIA »)
-        self.credit = text_layer(sc["credit"], MONT(30, "Bold"), WHITE, maxw=900) if sc.get("credit") else None
+        # source en très petit dans le coin (seulement pour une image de média : champ source ou credit)
+        txt = sc.get("credit") or (f"Photo : {sc['source']}" if sc.get("source") else "")
+        self.credit = text_layer(txt, MONT(22, "SemiBold"), WHITE, maxw=700) if txt else None
 
     def frame(self, i):
         sc, k = self.sc, self.sc["kind"]
@@ -483,7 +484,7 @@ class Scene:
         p = t / self.dur
         fr = Image.new("RGBA", (W, H), (0, 0, 0, 0))   # habillage en 1080x1920, composé en 4K à la fin
         if self.credit is not None:
-            paste(fr, self.credit, 36, H - 130)
+            paste(fr, self.credit, W - self.credit.width - 24, 150)
         # habillage permanent
         paste(fr, self.brand, 36, 50)
         paste(fr, self.date, W - self.date.width - 30, 95)
@@ -538,7 +539,6 @@ class Scene:
             ts = 0.35
             z = 0.92 + 0.08 * back_out((t - ts) / 0.45) + 0.02 * p   # pop puis léger zoom continu
             paste(fr, self.shot, (W - self.shot.width) / 2, y, ease_out((t - ts) / 0.3), z)
-            paste(fr, self.src, (W - self.src.width) / 2, y + self.shot.height + 30, ease_out((t - ts - 0.4) / 0.3))
         elif k == "civic":
             y = top + 110
             for j, l in enumerate(self.head_lines):
@@ -716,6 +716,8 @@ def make_cover_buzz(ep_dir, scenes):
     La pastille vient de `cover_pill` (défaut « ÇA BUZZE ») ; le fond, de `cover_image_scene` (index) sinon de la scène screen."""
     import datetime
     scr = next((s_ for s_ in scenes if s_["kind"] == "screen"), None)
+    if "cover_shot_scene" in EP:   # scène dont la photo est mise en avant sur la vignette
+        scr = scenes[EP["cover_shot_scene"]]
     bg_idx = EP.get("cover_image_scene", scenes.index(scr) if scr and scr.get("image") else 0)
     base = cover_base(ep_dir / "img" / f"{bg_idx:02d}.jpg")
     img = Image.new("RGBA", (W, H), (0, 0, 0, 0))
@@ -748,11 +750,11 @@ def make_cover_buzz(ep_dir, scenes):
     img.alpha_composite(t, ((W - t.width) // 2, y))
     y += t.height + 30
     if scr:
-        sh = shot_layer(ep_dir / scr["shot"], 900, min(560, 1560 - y)).rotate(-2, resample=Image.BICUBIC, expand=True)
+        sh = shot_layer(ep_dir / scr["shot"], 960, min(620, 1680 - y)).rotate(-2, resample=Image.BICUBIC, expand=True)
         img.alpha_composite(sh, ((W - sh.width) // 2, y))
-        y += sh.height + 6
-        sp = pill("SOURCE : " + scr["source"].upper(), WHITE, BLACK, 26)
-        img.alpha_composite(sp, ((W - sp.width) // 2, min(y, 1620)))
+        if scr.get("source"):   # source en très petit dans le coin
+            sp = text_layer(f"Photo : {scr['source']}", MONT(22, "SemiBold"), WHITE, maxw=700)
+            img.alpha_composite(sp, (W - sp.width - 24, H - 22 - sp.height - 8))
     hd = text_layer("@241degres", MONT(50, "Black"), WHITE, maxw=900, align="center")
     img.alpha_composite(hd, ((W - hd.width) // 2, 1720))
     Image.fromarray(compose(base, img)).save(ep_dir / "out" / "cover.jpg", quality=93)

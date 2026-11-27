@@ -60,12 +60,12 @@ Dossier `episodes/AAAA-MM-JJ-clip-<nom>/` contenant `clip.json` (la vidéo sourc
 - `shot` : chemin relatif au dossier de l'épisode (ex. `shots/01.png`), produit par
   `python3 tools/capture.py URL <dossier>/shots/01.png --above 10 --height 220` (ajuster pour garder le titre, la date et le nom du média, sans pub ni pop-up).
   Les captures ne sont pas versionnées (`episodes/*/shots/` dans .gitignore).
-- `source` : « Média ou @compte · JJ/MM/AAAA » (35 caractères max), affiché en « SOURCE : … ».
+- `source` : « Média ou @compte · JJ/MM/AAAA » (35 caractères max), affiché en très petit en haut à droite (« Photo : … ») ; à omettre pour une photo Unsplash.
 
 ## Short CULTURE (`"type": "culture"`, une actu)
-- Champs de vignette : `"cover_style": "short"`, `"cover_pill": "CULTURE"`, `"cover_pill_color": "green"`, `"cover_title"` (2 lignes de 14 caractères max), `"cover_image_scene"` (index de la scène dont la photo sert de fond, ex. 0).
+- Champs de vignette : `"cover_style": "short"`, `"cover_pill": "CULTURE"`, `"cover_pill_color": "green"`, `"cover_title"` (2 lignes de 14 caractères max), `"cover_image_scene"` (index de la scène dont la photo sert de fond), `"cover_shot_scene"` (index de la scène screen dont la photo est mise en avant, ex. celle de l'artiste).
 - `shot` d'une scène `screen` : photo de l'article téléchargée dans `shots/` (hors dépôt) ou capture (`tools/capture.py`). `image` peut aussi être un chemin local relatif au dossier.
-- `credit` (facultatif, toute scène) : petite mention « PHOTO : … » en bas de l'écran quand la photo de fond vient d'un article.
+- `credit` (facultatif, toute scène) : petite mention en haut à droite quand la photo de fond vient d'un média.
 
 ## Rendu 4K et luminosité
 - Sortie 2160×3840 (vidéo et vignette). La mise en page reste en coordonnées 1080×1920 ; les fonds sont traités en 4K.

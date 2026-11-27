@@ -1,0 +1,95 @@
+{
+  "type": "info",
+  "date": "27 NOV. 2026",
+  "title": "Oligui Nguema inaugure Cimaf, hausse du carburant, patrouilles de nuit, TikTok et la loi, Aubameyang : les infos du jour",
+  "voice": "fr-FR-HenriNeural",
+  "rate": "+5%",
+  "voice_ref": "assets/voix/stephane_se.json",
+  "scenes": [
+    {
+      "kind": "hook",
+      "image": "https://images.unsplash.com/photo-1674212943761-167b76c22c13?w=2400&q=85",
+      "kicker": "ACTU GABON",
+      "headline": "LES INFOS\nDU JOUR",
+      "voice": "Les infos du jour au Gabon. On t'explique."
+    },
+    {
+      "kind": "brief",
+      "image": "shots/01.jpg",
+      "credit": "Photo : Gabonactu · 26/11/2026",
+      "kicker": "1 · CHEF DE L'ÉTAT",
+      "headline": "CIMENT : USINE\nINAUGURÉE",
+      "problem": "Le Gabon dépend encore des importations pour son ciment",
+      "clear": "Production plus que doublée. Ce vendredi : sommet à Malabo",
+      "voice": "Première info, le chef de l'État. Jeudi à Owendo, Brice Clotaire Oligui Nguema a inauguré une nouvelle ligne de l'usine de ciment Cimaf. L'usine peut maintenant produire plus du double de ciment. Objectif : moins d'importations et plus d'emplois. Et ce vendredi, le président est à Malabo, au sommet des chefs d'État d'Afrique centrale.",
+      "cover": "OLIGUI NGUEMA INAUGURE CIMAF"
+    },
+    {
+      "kind": "brief",
+      "image": "https://images.unsplash.com/photo-1725958325955-c93892f18d3c?w=2400&q=85",
+      "kicker": "2 · TON PORTEFEUILLE",
+      "headline": "CARBURANT :\nÇA VA AUGMENTER",
+      "problem": "L'aide de l'État à la pompe coûte 35 milliards FCFA par mois",
+      "clear": "Hausse confirmée au 1er janvier 2027, prix pas encore connus",
+      "voice": "Deuxième info, ton portefeuille. Hier, la fin de l'aide au carburant était seulement envisagée. Cette fois, le gouvernement le confirme : le prix du carburant va augmenter le 1er janvier 2027. Cette aide coûte trop cher à l'État. Les nouveaux prix ne sont pas encore connus. Le gouvernement promet des mesures pour limiter le choc, surtout sur le transport.",
+      "cover": "CARBURANT : HAUSSE EN JANVIER"
+    },
+    {
+      "kind": "brief",
+      "image": "shots/03.jpg",
+      "credit": "Photo : Gabonreview · 25/11/2026",
+      "kicker": "3 · TA SÉCURITÉ",
+      "headline": "PATROUILLES\nDE NUIT",
+      "problem": "Agressions et cambriolages la nuit dans plusieurs quartiers",
+      "clear": "Patrouilles renforcées tout le mois de décembre",
+      "voice": "Troisième info, ta sécurité. Agressions, cambriolages : dans plusieurs quartiers de Libreville, la nuit fait peur. La police a lancé des patrouilles de nuit, notamment à Akébé, Petit-Paris, Carrefour-Hassan et aux Cocotiers. Elles doivent continuer pendant tout le mois de décembre. Le ministre de l'Intérieur en a fait une priorité, avec la lutte contre le racket.",
+      "cover": "LIBREVILLE : PATROUILLES DE NUIT"
+    },
+    {
+      "kind": "brief",
+      "image": "https://images.unsplash.com/photo-1597075095400-fb3f0de70140?w=2400&q=85",
+      "kicker": "4 · TON TÉLÉPHONE",
+      "headline": "TIKTOK ET LA\nLOI GABONAISE",
+      "problem": "Les règles de TikTok ne suivent pas toujours la loi gabonaise",
+      "clear": "Signalements mieux traités, mineurs mieux protégés",
+      "voice": "Quatrième info, ton téléphone. Une équipe de TikTok est à Libreville cette semaine. Elle a rencontré la Haute Autorité de la communication et l'autorité qui protège tes données personnelles. Ils sont d'accord pour traiter les signalements selon la loi gabonaise et mieux protéger les mineurs. Gagner de l'argent avec ses vidéos était aussi au menu.",
+      "cover": "TIKTOK ET LA LOI GABONAISE"
+    },
+    {
+      "kind": "brief",
+      "image": "shots/05.jpg",
+      "credit": "Photo : EssentiallySports · 27/11/2026",
+      "kicker": "5 · SPORT",
+      "headline": "AUBAMEYANG :\nSAIN ET SAUF",
+      "problem": "Accident de voiture jeudi matin sur une autoroute en Espagne",
+      "clear": "Aucun blessé signalé. Il s'est entraîné le jour même",
+      "voice": "Cinquième info, le foot. Grosse frayeur pour Pierre-Emerick Aubameyang. Jeudi matin, près de La Corogne, en Espagne, sa voiture a percuté une autre voiture, qui s'est retrouvée sur le toit. Bonne nouvelle : aucun blessé n'a été signalé. Notre attaquant a même rejoint l'entraînement de son club, le Deportivo, le jour même.",
+      "cover": "AUBAMEYANG SAIN ET SAUF"
+    },
+    {
+      "kind": "civic",
+      "image": "https://images.unsplash.com/photo-1674212943761-167b76c22c13?w=2400&q=85",
+      "kicker": "LE RÉFLEXE CITOYEN",
+      "headline": "PRIX DE\nL'ESSENCE :\nVÉRIFIE.",
+      "question": "Attends les prix officiels avant de partager un chiffre",
+      "voice": "Le réflexe citoyen du jour : sur le prix du carburant, de faux chiffres vont circuler. Avant de partager, attends les prix officiels annoncés par le gouvernement."
+    },
+    {
+      "kind": "cta",
+      "image": "https://images.unsplash.com/photo-1674212943761-167b76c22c13?w=2400&q=85",
+      "kicker": "ABONNE-TOI",
+      "headline": "@241degres",
+      "sub": "Ton avis en commentaire !",
+      "voice": "Abonne-toi pour recevoir nos capsules d'informations chaque jour ! Et dis-nous en commentaire ce que tu penses de ces actualités."
+    }
+  ],
+  "sources": [
+    "Oligui Nguema inaugure Cimaf / sommet CEEAC : https://www.gabonreview.com/industrie-cimaf-gabon-porte-sa-production-a-185-million-de-tonnes/ | https://gabonactu.com/blog/2026/11/26/owendo-oligui-nguema-inaugure-une-nouvelle-ligne-de-production-de-ciment-chez-cimaf/ | https://gabonmediatime.com/ceeac-oligui-nguema-a-malabo-pour-la-27eme-session-des-chefs-detat/",
+    "Hausse du carburant au 1er janvier 2027 : https://agpgabon.ga/gabon-hausse-des-prix-du-carburant-hermann-immongault-fait-les-derniers-reglages-avant-le-1er-janvier-2027/ (communiqué de la Vice-présidence du gouvernement) | https://www.gabonreview.com/carburants-le-gouvernement-prepare-la-fin-des-subventions/",
+    "Patrouilles de nuit à Libreville : https://www.gabonreview.com/insecurite-a-libreville-la-police-intensifie-les-patrouilles-nocturnes-dans-les-quartiers-sensibles/ | https://gabonmediatime.com/gabon-immigration-clandestine-lieux-de-culte-racket-edgard-moukoumbi-fixe-ses-priorites/",
+    "TikTok et les régulateurs : https://agpgabon.ga/gabon-cooperation-tiktok-et-la-hac-echangent-sur-ladaptation-de-la-plateforme-au-cadre-juridique-gabonais/ (communiqué HAC) | https://www.gabonreview.com/tiktok-au-gabon-la-protection-des-utilisateurs-au-coeur-du-dialogue-avec-lapdpvp/",
+    "Aubameyang sain et sauf : https://agpgabon.ga/football-gabonais-de-letranger-aubameyang-sort-indemne-dun-accident-de-la-circulation-en-espagne/ | https://www.essentiallysports.com/us-sports-soccer-news-former-premier-league-star-breaks-silence-after-car-overturns-in-a-horrifying-crash/"
+  ],
+  "credits": "Photos : Gabonactu (inauguration Cimaf, © Gabon Horizon 2032), Gabonreview (patrouille de police), EssentiallySports (Aubameyang, © Imago) ; Unsplash (burak cesur, Radek Skrzypczak, Nik)",
+  "hashtags": "#Gabon #Libreville #241degres #ActuGabon #InfoGabon #pourtoi #OliguiNguema #Carburant #TikTokGabon #Aubameyang"
+}

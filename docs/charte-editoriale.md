@@ -2,7 +2,7 @@
 
 ## Calendrier
 - **Tous les jours** : une capsule INFO de 5 infos (90–110 s), prête à 18 h, diffusée à 19 h (heure de Libreville).
-- **Un jour sur deux** : une capsule CULTURE (45–75 s) en plus.
+- **Tous les jours** : un short CULTURE (30–45 s) sur **une seule** actu culturelle (depuis le 27/11/2026, remplace la capsule culture « un jour sur deux »).
 - **Tous les matins** : la VEILLE VIDÉOS, liste des vidéos de personnalités publiques qui font parler (discours, entretiens, déclarations), envoyée à Stéphane.
 - **Dès que Stéphane dépose un extrait** dans le dossier Drive « 241degres - Clips à traiter » : un short EXTRAIT (20–60 s).
 
@@ -66,7 +66,17 @@ On évite : faits divers sordides, rumeurs, sujets judiciaires en cours sans dé
 - Aucun chiffre de mémoire. Les sources (deux par info) vont dans `post.txt`.
 - Pas d'affaires impliquant des mineurs, pas de rumeurs, pas de faits divers sordides.
 
-## Capsule CULTURE — formats en rotation
+## Short CULTURE quotidien (une actu à la fois)
+Modèle : `episodes/2026-11-27-culture/episode.json` (inspiré du short BUZZ).
+- **Sujet** : une actu culturelle gabonaise fraîche (24–72 h) ou un événement des jours qui viennent : concert, festival, expo, film, livre, mode, prix gagné par un Gabonais, patrimoine. Priorité à ce qui se passe « ce soir / ce week-end » avec date, lieu et prix.
+- **Structure** : hook (étiquette CULTURE, 3 lignes de 10 caractères max) → 1 ou 2 scènes `screen` avec la photo de l'article ou une capture, et la source à l'écran → `brief` PRATIQUE (date, lieu, prix) → cta « Tu y vas ? / Ton avis en commentaire ».
+- **Vignette** : style short (`cover_style: "short"`, pastille verte CULTURE, gros titre, photo de l'article et sa source).
+- **Vérification** : faits et chiffres lus le jour même dans l'article ; deux médias de préférence. Si une seule source (annonce d'organisateur relayée par un média), le signaler à Stéphane. Si l'orthographe d'un nom ou d'un titre diffère entre deux sources, on ne l'écrit pas.
+- **Photos d'articles** : autorisées, toujours avec la source à l'écran (« SOURCE : MÉDIA · DATE ») et dans la légende. Préférer les photos officielles (organisateur, institution). Si un média ou un photographe demande le retrait, on retire.
+- **Image** : rendu 4K (2160×3840), fonds lumineux (pas de voile sombre), photos d'ambiance Unsplash demandées en grande taille.
+- **Prononciation** (champ `voice`) : Mayumba se dit « Mayoumba » ; Ivindo, « in » comme dans « cuisine ».
+
+## Capsule CULTURE — anciens formats (réservés à un sujet de fond, sur demande)
 - Top 10 des plus belles villes ou des plus beaux sites (Libreville, Port-Gentil, Lambaréné, Franceville, Oyem, Lopé, Loango, Pongara, Akanda, Kongou…).
 - Top 5 ou 10 des artistes gabonais qui montent sur YouTube et TikTok (classement par abonnés ou vues **vérifiés le jour même**).
 - « Le saviez-vous ? » : histoire, langues (fang, punu, myènè, nzebi…), traditions (Bwiti, masques punu), gastronomie (nyembwe, odika, manioc).
@@ -75,6 +85,6 @@ On évite : faits divers sordides, rumeurs, sujets judiciaires en cours sans dé
 - Nature : parcs nationaux, faune (éléphants de forêt, baleines à Mayumba, tortues luths).
 
 ## Règles images et droits
-- Photos libres de droit uniquement (Unsplash, Pexels, Wikimedia Commons en CC). Les crédits vont dans `post.txt`.
+- Photos libres de droit (Unsplash, Pexels, Wikimedia Commons en CC), et photos d'articles de presse ou d'institutions avec la source à l'écran (shorts CULTURE et BUZZ). Les crédits vont dans `post.txt`.
 - Jamais de clips, pochettes ou photos d'artistes protégés : on cite leurs noms et leurs chiffres, et le visuel reste générique (ville, scène, instruments).
 - Musique générée par le pipeline (libre de droits). Sur TikTok, on peut remplacer la piste par un son tendance de la bibliothèque commerciale de TikTok.

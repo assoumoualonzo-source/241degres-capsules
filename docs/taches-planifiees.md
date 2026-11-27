@@ -20,5 +20,5 @@
 3. Envoyer vidéo, vignette, légende. Commit et push de `clip.json` et `out/post.txt` uniquement.
 4. Aucun fichier nouveau : ne rien envoyer.
 
-## CULTURE (un jour sur deux, ~11 h 30 Libreville)
-Même chaîne avec `episodes/AAAA-MM-JJ-culture/`. Format tiré de la rotation de la charte, différent des 3 derniers (regarder l'historique des dossiers `*-culture`). Pour un top : scènes `rank` du dernier au premier, hook « TOP 5 … », cta. Classements d'artistes vérifiés le jour même, aucun visuel protégé.
+## CULTURE (tous les jours, ~11 h 10 Libreville)
+Un short sur une seule actu culturelle (section « Short CULTURE quotidien » de la charte), dossier `episodes/AAAA-MM-JJ-culture/`, modèle `episodes/2026-11-27-culture/episode.json`. Ne pas reprendre un sujet déjà traité dans les 7 derniers jours (regarder les dossiers `*-culture`). Photos d'articles dans `shots/` avec la source à l'écran. Rendu 4K. Envoyer vidéo, vignette, légende ; commit et push de `episode.json` et `out/post.txt`.

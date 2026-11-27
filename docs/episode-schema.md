@@ -62,6 +62,16 @@ Dossier `episodes/AAAA-MM-JJ-clip-<nom>/` contenant `clip.json` (la vidéo sourc
   Les captures ne sont pas versionnées (`episodes/*/shots/` dans .gitignore).
 - `source` : « Média ou @compte · JJ/MM/AAAA » (35 caractères max), affiché en « SOURCE : … ».
 
+## Short CULTURE (`"type": "culture"`, une actu)
+- Champs de vignette : `"cover_style": "short"`, `"cover_pill": "CULTURE"`, `"cover_pill_color": "green"`, `"cover_title"` (2 lignes de 14 caractères max), `"cover_image_scene"` (index de la scène dont la photo sert de fond, ex. 0).
+- `shot` d'une scène `screen` : photo de l'article téléchargée dans `shots/` (hors dépôt) ou capture (`tools/capture.py`). `image` peut aussi être un chemin local relatif au dossier.
+- `credit` (facultatif, toute scène) : petite mention « PHOTO : … » en bas de l'écran quand la photo de fond vient d'un article.
+
+## Rendu 4K et luminosité
+- Sortie 2160×3840 (vidéo et vignette). La mise en page reste en coordonnées 1080×1920 ; les fonds sont traités en 4K.
+- `RENDER_SCALE=1 python3 pipeline/make.py …` pour un aperçu rapide en 1080p.
+- Les URL Unsplash sont demandées automatiquement en `w=2400`. Les photos d'articles sont souvent en 960 à 1200 px : elles sont agrandies, donc on les montre plutôt cadrées (scène `screen`) qu'en plein écran.
+
 ## Règles de mise en page
 - Titres : 2 lignes de 14 caractères max (3 lignes de 10 max pour civic).
 - `stat` : 12 caractères max.

@@ -1,0 +1,60 @@
+{
+  "type": "culture",
+  "cover_style": "short",
+  "cover_pill": "CULTURE",
+  "cover_pill_color": "green",
+  "cover_image_scene": 0,
+  "date": "27 NOV. 2026",
+  "title": "Ce soir à Libreville : Carmina Burana chanté pour la première fois au Gabon 🎶 Et demain, Adriana Bignagni Lesca à l'IFG",
+  "cover_title": "CE SOIR :\nCARMINA BURANA",
+  "voice": "fr-FR-HenriNeural",
+  "rate": "+5%",
+  "scenes": [
+    {
+      "kind": "hook",
+      "image": "https://images.unsplash.com/photo-1764219945689-b17b66711ee1?w=2400&q=85",
+      "kicker": "CULTURE",
+      "headline": "CE SOIR :\nUNE 1RE\nAU GABON",
+      "voice": "Ce soir à Libreville, une grande première au Gabon. On t'explique."
+    },
+    {
+      "kind": "screen",
+      "shot": "shots/01.jpg",
+      "source": "Gabon Media Time · 24/11/2026",
+      "kicker": "VENDREDI 27",
+      "headline": "CARMINA BURANA\nCHANTÉ ICI",
+      "voice": "Ce vendredi à 19 heures, les 45 choristes d'À Cœur Joie Gabon chantent Carmina Burana, de Carl Orff. C'est la toute première fois dans le pays."
+    },
+    {
+      "kind": "screen",
+      "shot": "shots/02.jpg",
+      "source": "Gabon Media Time · 13/11/2026",
+      "kicker": "SAMEDI 28",
+      "headline": "ADRIANA\nBIGNAGNI LESCA",
+      "voice": "Samedi, place à la chanteuse lyrique gabonaise Adriana Bignagni Lesca. Formée dans les chœurs du pays, elle chante aujourd'hui en Europe. Au programme : l'opéra et des airs traditionnels gabonais."
+    },
+    {
+      "kind": "brief",
+      "image": "https://images.unsplash.com/photo-1783461241043-67fc1f0f0635?w=2400&q=85",
+      "kicker": "PRATIQUE",
+      "headline": "COMMENT\nY ALLER ?",
+      "problem": "Une première au Gabon, et une Gabonaise de retour au pays",
+      "clear": "19 h, salle Pierre Akendengue. Samedi : dès 5 000 FCFA",
+      "voice": "C'est à 19 heures, salle Pierre Akendengue, à l'Institut français. Pour le récital de samedi, les billets vont de 5 000 à 30 000 francs CFA."
+    },
+    {
+      "kind": "cta",
+      "image": "https://images.unsplash.com/photo-1674212943761-167b76c22c13?w=2400&q=85",
+      "kicker": "ABONNE-TOI",
+      "headline": "@241degres",
+      "sub": "Tu y vas ? Dis-le en commentaire !",
+      "voice": "Et toi, tu y vas ? Dis-le en commentaire, et abonne-toi pour ne rien rater de la culture au Gabon !"
+    }
+  ],
+  "sources": [
+    "Photo et infos (vendredi 27) : Gabon Media Time, « Festival musique classique : «Carmina Burana» et Adriana Bignagni Lesca, en prestation inédite ces 27 et 28 novembre », 24/11/2026 : https://gabonmediatime.com/festival-musique-classique-carmina-burana-et-adriana-bignagni-lesca-en-prestation-inedite-ces-27-et-28-novembre/",
+    "Photo et infos (samedi 28, tarifs) : Gabon Media Time, « IFG : la Gabonaise Adriana Bignagni en prestation ce 28 novembre », 13/11/2026 : https://gabonmediatime.com/ifg-la-gabonaise-adriana-bignagni-en-prestation-ce-28-novembre/"
+  ],
+  "credits": "Photos des articles : Gabon Media Time. Photos d'ambiance : Unsplash (Carlota O., Manuel Luikenga, burak cesur).",
+  "hashtags": "#Gabon #Libreville #241degres #CultureGabon #CarminaBurana #MusiqueClassique #InstitutFrançais #pourtoi"
+}

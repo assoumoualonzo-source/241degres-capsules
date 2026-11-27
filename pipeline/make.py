@@ -14,6 +14,10 @@ from PIL import Image, ImageDraw, ImageFilter, ImageFont
 ROOT = Path(__file__).resolve().parent.parent
 FONTS = ROOT / "assets" / "fonts"
 W, H, FPS, SR = 1080, 1920, 30, 44100
+# Rendu 4K : la mise en page reste en coordonnées 1080x1920 ; les photos de fond sont traitées en 2160x3840
+# et l'habillage est agrandi (Lanczos) puis composé dessus. RENDER_SCALE=1 pour un rendu 1080p rapide.
+S = int(os.environ.get("RENDER_SCALE", "2"))
+RW, RH = W * S, H * S
 GREEN, YELLOW, BLUE, RED = (0, 158, 96), (252, 209, 22), (58, 117, 196), (230, 57, 70)
 WHITE, BLACK = (255, 255, 255), (8, 10, 14)
 INK_DARK = (14, 22, 36)
@@ -45,9 +49,16 @@ def back_out(t):
     return 1 + (c + 1) * (t - 1) ** 3 + c * (t - 1) ** 2
 
 
-def download(url, dest):
+def download(url, dest, base=None):
     if dest.exists() and dest.stat().st_size > 1000:
         return
+    if not url.startswith("http"):   # photo locale (ex. photo d'article téléchargée dans shots/)
+        Image.open(Path(base or ".") / url).convert("RGB").save(dest, quality=95)
+        return
+    if "images.unsplash.com" in url:   # 4K : on demande une largeur suffisante
+        import re
+        url = re.sub(r"([?&])w=\d+", r"\1w=2400", url)
+        url = re.sub(r"([?&])q=\d+", r"\1q=85", url)
     req = urllib.request.Request(url, headers={"User-Agent": "241degres/1.0"})
     with urllib.request.urlopen(req, timeout=60) as r, open(dest, "wb") as f:
         f.write(r.read())
@@ -338,25 +349,58 @@ def whoosh():
 def prep_bg(path):
     img = cv2.imread(str(path))
     h, w = img.shape[:2]
-    s = max(W * 1.12 / w, H * 1.12 / h)
-    img = cv2.resize(img, (int(w * s), int(h * s)), interpolation=cv2.INTER_AREA)
+    s = max(RW * 1.12 / w, RH * 1.12 / h)
+    img = cv2.resize(img, (int(w * s), int(h * s)), interpolation=cv2.INTER_AREA if s < 1 else cv2.INTER_LANCZOS4)
     h, w = img.shape[:2]
-    y0, x0 = (h - int(H * 1.12)) // 2, (w - int(W * 1.12)) // 2
-    img = img[y0:y0 + int(H * 1.12), x0:x0 + int(W * 1.12)]
-    img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB).astype(np.float32)
-    # assombrissement + dégradé haut/bas pour la lisibilité
+    y0, x0 = (h - int(RH * 1.12)) // 2, (w - int(RW * 1.12)) // 2
+    img = img[y0:y0 + int(RH * 1.12), x0:x0 + int(RW * 1.12)]
+    img = brighten(cv2.cvtColor(img, cv2.COLOR_BGR2RGB)).astype(np.float32)
+    # voile léger, plus marqué seulement dans la zone des titres (l'image reste lumineuse)
     yy = np.linspace(0, 1, img.shape[0])[:, None, None]
-    shade = 0.30 + 0.22 * np.exp(-((yy - 0.35) ** 2) / 0.05)
+    shade = 0.92 - 0.26 * np.exp(-((yy - 0.40) ** 2) / 0.06)
     img = img * shade
     return np.clip(img, 0, 255).astype(np.uint8)
+
+
+def brighten(rgb):
+    """Photo plus lumineuse et plus vive : gamma 0,85, saturation +15 %, netteté légère."""
+    lut = np.array([((i / 255) ** 0.85) * 255 for i in range(256)], np.uint8)
+    rgb = cv2.LUT(rgb, lut)
+    hsv = cv2.cvtColor(rgb, cv2.COLOR_RGB2HSV).astype(np.float32)
+    hsv[..., 1] = np.clip(hsv[..., 1] * 1.15, 0, 255)
+    rgb = cv2.cvtColor(hsv.astype(np.uint8), cv2.COLOR_HSV2RGB)
+    blur = cv2.GaussianBlur(rgb, (0, 0), 2.0)
+    return cv2.addWeighted(rgb, 1.25, blur, -0.25, 0)
+
+
+def compose(base, overlay):
+    """Compose l'habillage (RGBA 1080x1920) agrandi en 4K sur la photo de fond (RGB RWxRH)."""
+    ov = np.asarray(overlay, dtype=np.float32)
+    a = ov[..., 3:4] / 255.0
+    prem = ov[..., :3] * a
+    if S != 1:
+        prem = cv2.resize(prem, (RW, RH), interpolation=cv2.INTER_LANCZOS4)
+        a = np.clip(cv2.resize(a[..., 0], (RW, RH), interpolation=cv2.INTER_LANCZOS4), 0, 1)[..., None]
+    out = base.astype(np.float32) * (1 - a) + prem
+    return np.clip(out, 0, 255).astype(np.uint8)
+
+
+def cover_base(path):
+    """Photo de vignette recadrée en RWxRH, éclaircie."""
+    src = cv2.cvtColor(cv2.imread(str(path)), cv2.COLOR_BGR2RGB)
+    h0, w0 = src.shape[:2]
+    sc_ = max(RW / w0, RH / h0)
+    src = cv2.resize(src, (int(w0 * sc_) + 1, int(h0 * sc_) + 1), interpolation=cv2.INTER_AREA if sc_ < 1 else cv2.INTER_LANCZOS4)
+    y0, x0 = (src.shape[0] - RH) // 2, (src.shape[1] - RW) // 2
+    return brighten(np.ascontiguousarray(src[y0:y0 + RH, x0:x0 + RW]))
 
 
 def bg_frame(bg, t, direction):
     z = 1.0 + 0.07 * t
     bh, bw = bg.shape[:2]
-    cx, cy = bw / 2 + direction * 30 * (t - 0.5), bh / 2
-    M = np.float32([[z, 0, W / 2 - z * cx], [0, z, H / 2 - z * cy]])
-    return cv2.warpAffine(bg, M, (W, H), flags=cv2.INTER_LINEAR, borderMode=cv2.BORDER_REFLECT)
+    cx, cy = bw / 2 + direction * 30 * S * (t - 0.5), bh / 2
+    M = np.float32([[z, 0, RW / 2 - z * cx], [0, z, RH / 2 - z * cy]])
+    return cv2.warpAffine(bg, M, (RW, RH), flags=cv2.INTER_LINEAR, borderMode=cv2.BORDER_REFLECT)
 
 
 def chunks(words, maxc=16):
@@ -422,7 +466,7 @@ class Scene:
         if k == "civic":
             self.q = card("TA RÉPONSE EN COMMENTAIRE", sc["question"], YELLOW)
         if k == "screen":
-            self.shot = shot_layer(ep_dir / sc["shot"], 940, 560)
+            self.shot = shot_layer(ep_dir / sc["shot"], 940, 430)   # la source reste au-dessus des sous-titres (y 1390)
             self.src = pill("SOURCE : " + sc["source"].upper(), WHITE, BLACK, 40)
         if k == "cta":
             self.logo = logo_layer(400)
@@ -430,12 +474,16 @@ class Scene:
             self.sub = text_layer(sc.get("sub", ""), MONT(46, "Bold"), YELLOW, maxw=960, align="center")
         self.brand = logo_layer(124)
         self.date = text_layer(EP["date"], MONT(36, "Bold"), WHITE, maxw=500)
+        # crédit photo à l'écran (photos d'articles : « PHOTO : MÉDIA »)
+        self.credit = text_layer(sc["credit"], MONT(30, "Bold"), WHITE, maxw=900) if sc.get("credit") else None
 
     def frame(self, i):
         sc, k = self.sc, self.sc["kind"]
         t = i / FPS
         p = t / self.dur
-        fr = Image.fromarray(bg_frame(self.bg, p, self.dir)).convert("RGBA")
+        fr = Image.new("RGBA", (W, H), (0, 0, 0, 0))   # habillage en 1080x1920, composé en 4K à la fin
+        if self.credit is not None:
+            paste(fr, self.credit, 36, H - 130)
         # habillage permanent
         paste(fr, self.brand, 36, 50)
         paste(fr, self.date, W - self.date.width - 30, 95)
@@ -519,7 +567,7 @@ class Scene:
         if t < 0.18 and self.idx > 0:
             fl = Image.new("RGBA", (W, H), (255, 255, 255, int(200 * (1 - t / 0.18))))
             fr.alpha_composite(fl)
-        return fr.convert("RGB")
+        return Image.fromarray(compose(bg_frame(self.bg, p, self.dir), fr))
 
 
 def shot_layer(path, maxw, maxh):
@@ -595,17 +643,13 @@ def make_cover(ep_dir, scenes):
     """Vignette TikTok 1080x1920, lumineuse : grand logo, date, titre, 5 infos illustrées sur cartes claires.
     Le contenu utile tient dans la zone centrale 3:4 (y 240-1680) visible dans la grille du profil."""
     import datetime
-    src = cv2.cvtColor(cv2.imread(str(ep_dir / "img" / "01.jpg")), cv2.COLOR_BGR2RGB)
-    h0, w0 = src.shape[:2]
-    sc_ = max(W / w0, H / h0)
-    src = cv2.resize(src, (int(w0 * sc_) + 1, int(h0 * sc_) + 1), interpolation=cv2.INTER_AREA)
-    y0, x0 = (src.shape[0] - H) // 2, (src.shape[1] - W) // 2
-    img = Image.fromarray(src[y0:y0 + H, x0:x0 + W]).convert("RGBA")
+    base = cover_base(ep_dir / "img" / "01.jpg")
+    img = Image.new("RGBA", (W, H), (0, 0, 0, 0))   # habillage 1080x1920, composé en 4K sur la photo
     # voile léger : l'image reste lumineuse, juste assez assombrie sous le titre
     shade = Image.new("RGBA", (W, H))
     sd = ImageDraw.Draw(shade)
     for y in range(H):
-        a_ = int(25 + 95 * min(1, max(0, y - 300) / 500))
+        a_ = int(10 + 75 * min(1, max(0, y - 300) / 500))
         sd.line([(0, y), (W, y)], fill=(5, 20, 35, a_))
     img.alpha_composite(shade)
     d = ImageDraw.Draw(img)
@@ -664,21 +708,18 @@ def make_cover(ep_dir, scenes):
         d.text((tx, ry + 58), label, font=f, fill=INK_DARK)
     hd = text_layer("@241degres", MONT(50, "Black"), WHITE, maxw=900, align="center")
     img.alpha_composite(hd, ((W - hd.width) // 2, y + 5 * row_h + 5))
-    img.convert("RGB").save(ep_dir / "out" / "cover.jpg", quality=93)
+    Image.fromarray(compose(base, img)).save(ep_dir / "out" / "cover.jpg", quality=93)
 
 
 def make_cover_buzz(ep_dir, scenes):
-    """Vignette d'un short BUZZ (un seul sujet) : logo, date, pastille ÇA BUZZE, gros titre, capture créditée."""
+    """Vignette d'un short à sujet unique (BUZZ, CULTURE…) : logo, date, pastille, gros titre, capture ou photo créditée.
+    La pastille vient de `cover_pill` (défaut « ÇA BUZZE ») ; le fond, de `cover_image_scene` (index) sinon de la scène screen."""
     import datetime
     scr = next((s_ for s_ in scenes if s_["kind"] == "screen"), None)
-    bg_idx = scenes.index(scr) if scr and scr.get("image") else 0
-    src = cv2.cvtColor(cv2.imread(str(ep_dir / "img" / f"{bg_idx:02d}.jpg")), cv2.COLOR_BGR2RGB)
-    h0, w0 = src.shape[:2]
-    sc_ = max(W / w0, H / h0)
-    src = cv2.resize(src, (int(w0 * sc_) + 1, int(h0 * sc_) + 1), interpolation=cv2.INTER_AREA)
-    y0, x0 = (src.shape[0] - H) // 2, (src.shape[1] - W) // 2
-    img = Image.fromarray(src[y0:y0 + H, x0:x0 + W]).convert("RGBA")
-    img.alpha_composite(Image.new("RGBA", (W, H), (5, 12, 24, 120)))
+    bg_idx = EP.get("cover_image_scene", scenes.index(scr) if scr and scr.get("image") else 0)
+    base = cover_base(ep_dir / "img" / f"{bg_idx:02d}.jpg")
+    img = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    img.alpha_composite(Image.new("RGBA", (W, H), (5, 12, 24, 70)))
     d = ImageDraw.Draw(img)
     for i, c in enumerate((GREEN, YELLOW, BLUE)):
         d.rectangle((i * W / 3, 0, (i + 1) * W / 3, 22), fill=c)
@@ -695,7 +736,8 @@ def make_cover_buzz(ep_dir, scenes):
         date_txt = f"{JOURS[dt.weekday()]} {dt.day} {mois[dt.month - 1]} {dt.year}"
     except ValueError:
         date_txt = EP["date"]
-    row = [pill("ÇA BUZZE", RED, WHITE, 46), pill(date_txt, YELLOW, BLACK, 46)]
+    pc = {"red": RED, "green": GREEN, "blue": BLUE}.get(EP.get("cover_pill_color", "red"), RED)
+    row = [pill(EP.get("cover_pill", "ÇA BUZZE"), pc, WHITE, 46), pill(date_txt, YELLOW, BLACK, 46)]
     tw = sum(r.width for r in row) + 20
     x = (W - tw) // 2
     for r in row:
@@ -713,7 +755,7 @@ def make_cover_buzz(ep_dir, scenes):
         img.alpha_composite(sp, ((W - sp.width) // 2, min(y, 1620)))
     hd = text_layer("@241degres", MONT(50, "Black"), WHITE, maxw=900, align="center")
     img.alpha_composite(hd, ((W - hd.width) // 2, 1720))
-    img.convert("RGB").save(ep_dir / "out" / "cover.jpg", quality=93)
+    Image.fromarray(compose(base, img)).save(ep_dir / "out" / "cover.jpg", quality=93)
 
 
 LEAD, TAIL = 0.15, 0.30
@@ -732,7 +774,7 @@ def main(ep_dir):
     durs, words_all, voices = [], [], []
     for i, sc in enumerate(scenes):
         if sc.get("image"):
-            download(sc["image"], ep_dir / "img" / f"{i:02d}.jpg")
+            download(sc["image"], ep_dir / "img" / f"{i:02d}.jpg", ep_dir)
         else:   # scène screen sans photo : fond flou tiré de la capture
             shot_background(ep_dir / sc["shot"], ep_dir / "img" / f"{i:02d}.jpg")
         mp3, wj = ep_dir / "audio" / f"{i:02d}.mp3", ep_dir / "audio" / f"{i:02d}.json"
@@ -755,7 +797,8 @@ def main(ep_dir):
         durs.append(round((LEAD + len(v) / SR + TAIL) * FPS) / FPS)
     total = sum(durs)
     print(f"Durée totale : {total:.1f} s")
-    (make_cover_buzz if EP.get("type") == "buzz" else make_cover)(ep_dir, scenes)
+    single = EP.get("type") == "buzz" or EP.get("cover_style") == "short"
+    (make_cover_buzz if single else make_cover)(ep_dir, scenes)
     # 2. vidéo, une scène = un fichier
     offset, files = 0.0, []
     for i, sc in enumerate(scenes):
@@ -768,7 +811,7 @@ def main(ep_dir):
             offset += durs[i]
             continue
         tmp = out.with_suffix(".tmp.mp4")
-        p = subprocess.Popen(["ffmpeg", "-v", "error", "-y", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}",
+        p = subprocess.Popen(["ffmpeg", "-v", "error", "-y", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{RW}x{RH}",
                               "-r", str(FPS), "-i", "-", "-c:v", "libx264", "-preset", "veryfast", "-crf", "20",
                               "-pix_fmt", "yuv420p", str(tmp)], stdin=subprocess.PIPE)
         for f in range(int(round(durs[i] * FPS))):
@@ -787,7 +830,7 @@ def main(ep_dir):
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-framerate", str(FPS), "-i", str(ep_dir / "out" / "cover.jpg"),
                     "-vf", f"format=yuv420p,loop=-1:1,trim=duration={COVER_DUR},"
                            f"scale=iw*1.04:-1,zoompan=z='min(1+0.04*on/{int(COVER_DUR * FPS)},1.04)':d=1:"
-                           f"x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':s={W}x{H}:fps={FPS},format=yuv420p",
+                           f"x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':s={RW}x{RH}:fps={FPS},format=yuv420p",
                     "-c:v", "libx264", "-preset", "veryfast", "-crf", "20", "-pix_fmt", "yuv420p", "-r", str(FPS),
                     str(tmp)], check=True)
     tmp.rename(intro)

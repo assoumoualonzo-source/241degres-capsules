@@ -1,0 +1,59 @@
+{
+  "type": "culture",
+  "cover_style": "short",
+  "cover_pill": "CULTURE",
+  "cover_pill_color": "green",
+  "cover_image_scene": 0,
+  "date": "27 NOV. 2026",
+  "title": "Festival du film de Masuku : 10 films en compétition, 5 villes, entrée gratuite, du 3 au 10 décembre 🎬",
+  "cover_title": "CINÉMA GRATUIT\nDÈS LE 3 DÉC.",
+  "voice": "fr-FR-HenriNeural",
+  "rate": "+5%",
+  "scenes": [
+    {
+      "kind": "hook",
+      "image": "shots/hook.jpg",
+      "kicker": "CULTURE",
+      "headline": "CINÉMA\nGRATUIT\n5 VILLES",
+      "voice": "Le cinéma va s'installer dans cinq villes du Gabon. Et c'est gratuit !"
+    },
+    {
+      "kind": "screen",
+      "shot": "shots/01.jpg",
+      "kicker": "3 AU 10 DÉC.",
+      "headline": "FESTIVAL\nDE MASUKU",
+      "voice": "Du 3 au 10 décembre, le Festival du film de Massoukou fête sa quatorzième édition. Plus de 200 films ont été envoyés : 10 sont en compétition, venus de six pays, dont le Gabon avec Afrotopia."
+    },
+    {
+      "kind": "screen",
+      "shot": "shots/02.jpg",
+      "kicker": "LE THÈME",
+      "headline": "HABITER\nDEMAIN",
+      "voice": "Le thème cette année : « Habiter demain ». Les films parlent de notre façon d'habiter, de la nature et de ce qu'on laissera à nos enfants. Il y aura aussi du théâtre et une expo photo."
+    },
+    {
+      "kind": "brief",
+      "image": "https://images.unsplash.com/photo-1706387784538-48526c940e5c?w=2400&q=85",
+      "kicker": "PRATIQUE",
+      "headline": "COMMENT\nY ALLER ?",
+      "problem": "14e édition : 10 films en compétition, 6 pays",
+      "clear": "Dès le 3 déc. à Masuku, puis 4 villes. Entrée gratuite",
+      "voice": "Ça démarre le 3 décembre à Massoukou, à Franceville, puis Moanda, Lambaréné, Port-Gentil et Libreville, à la Baie des Rois. Et l'entrée est gratuite !"
+    },
+    {
+      "kind": "cta",
+      "image": "https://images.unsplash.com/photo-1653842045754-59b63ea5a58e?w=2400&q=85",
+      "kicker": "ABONNE-TOI",
+      "headline": "@241degres",
+      "sub": "Tu y vas ? Dis-le en commentaire !",
+      "voice": "Et toi, tu y vas ? Dis-le en commentaire, et abonne-toi pour ne rien rater de la culture au Gabon !"
+    }
+  ],
+  "sources": [
+    "Gabonreview, « Festival de Masuku : 10 films en compétition autour du thème «Habiter demain» », 23/11/2026 : https://www.gabonreview.com/festival-de-masuku-10-films-en-competition-autour-du-theme-habiter-demain/",
+    "Gabon Media Time, « Festival du film de Masuku : c'est parti pour une 14e édition sous le signe de l'avenir », 23/11/2026 : https://gabonmediatime.com/festival-du-film-de-masuku-cest-parti-pour-une-14e-edition-sous-le-signe-de-lavenir/"
+  ],
+  "credits": "Photos d'illustration : Unsplash (ANNIE HATUANH, Denise Jans, Sam Tsonis, Vian de Blanche', Thomas Bennie).",
+  "hashtags": "#Gabon #Franceville #Libreville #241degres #CultureGabon #Cinéma #FestivalMasuku #pourtoi",
+  "cover_shot_scene": 1
+}

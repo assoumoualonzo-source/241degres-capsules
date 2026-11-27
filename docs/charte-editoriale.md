@@ -6,6 +6,16 @@
 - **Tous les matins** : la VEILLE VIDÉOS, liste des vidéos de personnalités publiques qui font parler (discours, entretiens, déclarations), envoyée à Stéphane.
 - **Dès que Stéphane dépose un extrait** dans le dossier Drive « 241degres - Clips à traiter » : un short EXTRAIT (20–60 s).
 
+## Principes communs à TOUTES les capsules (INFO, CULTURE, BUZZ, EXTRAIT) — depuis le 27/11/2026
+Démarche d'amélioration continue (PDCA) : chaque retour de Stéphane devient une règle ici, pour tous les formats.
+1. **Pertinence de l'image** : à chaque scène, l'image montre ce dont parle la voix (la personne, le lieu, l'objet, l'événement). Quand on parle de quelqu'un, on le montre. Une photo d'article qui ne montre pas le sujet (conférence de presse, tribune, logo) n'est pas utilisée. Une photo générique n'est qu'un dernier recours, et alors elle doit représenter le sujet (un chœur pour un concert de chœur, une pompe à essence pour le carburant).
+2. **Photos d'articles** : autorisées et recherchées (og:image et photos du corps de l'article, téléchargées dans `shots/`, hors dépôt). Les questions de droits et de retrait sont gérées par Stéphane.
+3. **Source** : pas de bandeau « SOURCE ». Seulement quand l'image (ou la vidéo, ou la capture) vient d'un média : « Photo : Média · date » (« Source : … » pour un extrait vidéo) en très petit en haut à droite, et en bas à droite sur la vignette. Rien pour une photo Unsplash. La source complète va dans la légende et `post.txt`.
+4. **Vignette** : un sujet fort et lisible dans la grille du profil, avec l'image de la personne ou du sujet principal (champ `cover_shot_scene` pour les shorts ; pour la capsule INFO, l'image de l'info n°1 doit être parlante et lumineuse).
+5. **4K et luminosité** : vidéo et vignette en 2160×3840 ; fonds lumineux, voiles légers ; photos Unsplash en grande taille (w=2400).
+6. **Lisibilité** : rien ne chevauche les sous-titres ni le texte ; vérifier les images de contrôle avant chaque rendu final.
+7. **Prononciation** (champ `voice`) : Mayumba = « Mayoumba » ; Ivindo, « in » comme dans « cuisine » ; sigles écrits comme ils se prononcent.
+
 ## Public
 Le Gabonais moyen, pas un spécialiste. Si un élève de 3e ne comprend pas une phrase, on la réécrit.
 
@@ -22,7 +32,7 @@ Le Gabonais moyen, pas un spécialiste. Si un élève de 3e ne comprend pas une 
 **Extraction** : Stéphane télécharge ou filme l'extrait et le dépose dans le dossier Drive « 241degres - Clips à traiter » (partagé « tous les utilisateurs disposant du lien »), nommé `AAAA-MM-JJ Nom - Média.mp4`. Il peut ajouter dans la description du fichier, ou dans un fichier texte du même nom, le lien d'origine et le minutage voulu.
 **Le short EXTRAIT** (`pipeline/clip.py`) :
 - Image et son d'origine, sans coupe qui change le sens : on garde la phrase entière et son contexte. Jamais de montage qui fait dire à quelqu'un ce qu'il n'a pas dit.
-- Habillage : étiquette (DISCOURS, ENTRETIEN, DÉCLARATION, DÉBAT), titre = la phrase forte entre guillemets, telle qu'elle est prononcée ; nom et fonction de la personne ; sous-titres mot à mot ; « SOURCE : média · date » à l'écran du début à la fin ; vignette d'ouverture (1 s) et carton de fin (question + abonnement).
+- Habillage : étiquette (DISCOURS, ENTRETIEN, DÉCLARATION, DÉBAT), titre = la phrase forte entre guillemets, telle qu'elle est prononcée ; nom et fonction de la personne ; sous-titres mot à mot ; « Source : média · date » en très petit en haut à droite du début à la fin ; vignette d'ouverture (1 s) et carton de fin (question + abonnement).
 - 20 à 45 s conseillé, 60 s maximum : on cite un passage, on ne republie pas l'émission.
 - Légende : contexte en une ou deux phrases neutres, la source et le lien de la vidéo d'origine.
 - Équilibre : on ne suit pas un camp. Sur la durée, les extraits donnent la parole à la majorité, à l'opposition et à la société civile. Pas de commentaire moqueur ni d'emoji qui juge la personne.
@@ -87,6 +97,6 @@ Modèle : `episodes/2026-11-27-culture/episode.json` (inspiré du short BUZZ).
 - Nature : parcs nationaux, faune (éléphants de forêt, baleines à Mayumba, tortues luths).
 
 ## Règles images et droits
-- Photos libres de droit (Unsplash, Pexels, Wikimedia Commons en CC), et photos d'articles de presse ou d'institutions avec la source à l'écran (shorts CULTURE et BUZZ). Les crédits vont dans `post.txt`.
+- Voir « Principes communs » : photos d'articles et d'institutions recherchées quand elles montrent le sujet, sinon photos libres (Unsplash, Pexels, Wikimedia Commons en CC) qui représentent le sujet. Les crédits vont dans `post.txt`.
 - Jamais de clips, pochettes ou photos d'artistes protégés : on cite leurs noms et leurs chiffres, et le visuel reste générique (ville, scène, instruments).
 - Musique générée par le pipeline (libre de droits). Sur TikTok, on peut remplacer la piste par un son tendance de la bibliothèque commerciale de TikTok.

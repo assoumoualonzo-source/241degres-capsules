@@ -4,7 +4,7 @@
 1. Cloner le dépôt, lire `docs/charte-editoriale.md` et `docs/episode-schema.md`.
 2. Veille sur toutes les sources de la charte : 5 infos (n°1 = chef de l'État), chacune confirmée par deux médias.
 3. Pour chaque sujet : intérêt pour la population, intérêt pour l'État, réflexe citoyen.
-4. Images libres de droit (Unsplash) en orientation portrait.
+4. Images selon les « Principes communs » de la charte : pertinence (on montre la personne, le lieu ou l'objet dont on parle), photos d'articles dans `shots/` (`"image": "shots/NN.jpg"` et `"credit": "Photo : Média · JJ/MM/AAAA"`), sinon Unsplash lumineux et lié au sujet (w=2400). Rendu 4K automatique.
 5. Écrire `episodes/AAAA-MM-JJ-info/episode.json` (hook, 5 scènes brief, civic, cta ; voix clonée via voice_ref).
 6. `python3 pipeline/make.py <dossier> --preview` : contrôler les images et la vignette out/cover.jpg (date, logo, 5 infos lisibles, rien de coupé ; champ `cover` de chaque brief), corriger, puis rendu final.
 7. Envoyer `video.mp4`, `cover.jpg` et le texte de `post.txt` à l'utilisateur. Commit et push du JSON et de `post.txt`.

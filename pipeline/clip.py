@@ -115,9 +115,9 @@ def static_layer(ep, vertical, fg_box):
     for y in range(H):
         a = 0
         if y < 620:
-            a = int((200 if vertical else 120) * (1 - y / 620))
+            a = int((150 if vertical else 90) * (1 - y / 620))   # voiles allégés : image lumineuse
         elif y > 1180:
-            a = int((215 if vertical else 150) * min(1, (y - 1180) / 400))
+            a = int((170 if vertical else 110) * min(1, (y - 1180) / 400))
         if a:
             d.line([(0, y), (W, y)], fill=(4, 8, 14, a))
     lay.alpha_composite(M.logo_layer(124), (36, 50))
@@ -138,8 +138,9 @@ def static_layer(ep, vertical, fg_box):
         d.rounded_rectangle((60, y0 + name.height + 30, 60 + role.width + 56, y0 + name.height + 30 + role.height + 20),
                             radius=14, fill=(14, 22, 36, 235))
         lay.alpha_composite(role, (60 + 28, y0 + name.height + 38))
-    src = M.pill("SOURCE : " + ep["source"].upper(), M.WHITE, M.BLACK, 38)
-    lay.alpha_composite(src, ((W - src.width) // 2, 1660))
+    # source en très petit dans le coin (sous la date)
+    src = M.text_layer("Source : " + ep["source"], M.MONT(22, "SemiBold"), M.WHITE, maxw=700)
+    lay.alpha_composite(src, (W - src.width - 24, 150))
     return lay
 
 
@@ -167,7 +168,7 @@ def make_cover(frame_rgb, ep, out):
     shade = Image.new("RGBA", (W, H))
     sd = ImageDraw.Draw(shade)
     for y in range(H):
-        sd.line([(0, y), (W, y)], fill=(5, 12, 24, int(60 + 140 * min(1, abs(y - 900) / 800))))
+        sd.line([(0, y), (W, y)], fill=(5, 12, 24, int(25 + 95 * min(1, abs(y - 900) / 800))))
     img.alpha_composite(shade)
     d = ImageDraw.Draw(img)
     for i, c in enumerate((M.GREEN, M.YELLOW, M.BLUE)):
@@ -190,11 +191,11 @@ def make_cover(frame_rgb, ep, out):
     y += t.height + 40
     name = M.pill(ep["speaker"].upper(), M.YELLOW, M.BLACK, 50)
     img.alpha_composite(name, ((W - name.width) // 2, max(y, 1300)))
-    src = M.pill("SOURCE : " + ep["source"].upper(), M.WHITE, M.BLACK, 38)
-    img.alpha_composite(src, ((W - src.width) // 2, max(y, 1300) + name.height + 24))
+    src = M.text_layer("Source : " + ep["source"], M.MONT(22, "SemiBold"), M.WHITE, maxw=700)
+    img.alpha_composite(src, (W - src.width - 24, H - 22 - src.height - 8))
     hd = M.text_layer("@241degres", M.MONT(50, "Black"), M.WHITE, maxw=900, align="center")
     img.alpha_composite(hd, ((W - hd.width) // 2, 1740))
-    img.convert("RGB").save(out, quality=93)
+    img.convert("RGB").resize((M.RW, M.RH), Image.LANCZOS).save(out, quality=93)   # vignette 4K
 
 
 # ---------- étape 2 : rendu ----------
@@ -308,7 +309,8 @@ def render(d, ep, preview):
     # rendu de l'extrait habillé
     body = wk / "body.mp4"
     enc = subprocess.Popen(["ffmpeg", "-v", "error", "-y", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}",
-                            "-r", str(FPS), "-i", "-", "-c:v", "libx264", "-preset", "veryfast", "-crf", "20",
+                            "-r", str(FPS), "-i", "-", "-vf", f"scale={M.RW}:{M.RH}:flags=lanczos",   # sortie 4K
+                            "-c:v", "libx264", "-preset", "veryfast", "-crf", "20",
                             "-pix_fmt", "yuv420p", str(body)], stdin=subprocess.PIPE)
     cover_i, last, cover_fr = int(n * float(ep.get("cover_at", 0.35))), None, None
     for i, fr in frames():
@@ -327,7 +329,7 @@ def render(d, ep, preview):
     for name, img, du in (("intro", d / "out" / "cover.jpg", COVER_DUR), ("end", endimg, END_DUR)):
         out = wk / f"{name}.mp4"
         subprocess.run(["ffmpeg", "-v", "error", "-y", "-loop", "1", "-framerate", str(FPS), "-t", str(du), "-i", str(img),
-                        "-vf", f"scale={W}:{H},format=yuv420p", "-c:v", "libx264", "-preset", "veryfast", "-crf", "20",
+                        "-vf", f"scale={M.RW}:{M.RH}:flags=lanczos,format=yuv420p", "-c:v", "libx264", "-preset", "veryfast", "-crf", "20",
                         "-r", str(FPS), str(out)], check=True)
         parts.append(out)
     lst = wk / "list.txt"

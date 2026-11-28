@@ -1,0 +1,59 @@
+{
+  "type": "culture",
+  "cover_style": "short",
+  "cover_pill": "CULTURE",
+  "cover_pill_color": "green",
+  "cover_image_scene": 1,
+  "date": "28 NOV. 2026",
+  "title": "La BD gabonaise fête ses 50 ans : l'expo « Histoires dessinées » est à l'Institut français de Libreville, et c'est gratuit ✏️",
+  "cover_title": "BD GABONAISE :\nEXPO GRATUITE",
+  "voice": "fr-FR-HenriNeural",
+  "rate": "+5%",
+  "scenes": [
+    {
+      "kind": "hook",
+      "image": "https://images.unsplash.com/photo-1590808233940-e2da37f58d8a?w=2400&q=85",
+      "kicker": "CULTURE",
+      "headline": "LA BD\nGABONAISE\nA 50 ANS",
+      "voice": "La bédé gabonaise fête ses 50 ans, et l'expo est gratuite !"
+    },
+    {
+      "kind": "screen",
+      "shot": "shots/01.jpg",
+      "source": "Institut français · 20/11/2026",
+      "kicker": "DÈS 1975",
+      "headline": "HISTOIRES\nDESSINÉES",
+      "voice": "À l'Institut français, l'expo « Histoires dessinées » raconte 50 ans de bédé gabonaise : des premières planches dans la presse en 1975, jusqu'aux créations d'aujourd'hui. Tu vas voir comment nos dessinateurs ont grandi."
+    },
+    {
+      "kind": "screen",
+      "shot": "shots/02.jpg",
+      "kicker": "AUJOURD'HUI",
+      "headline": "MANGA ET\nNUMÉRIQUE",
+      "voice": "Dans les années 2000, la bédé sert aussi à sensibiliser, contre le braconnage ou le travail des enfants. Et aujourd'hui, une nouvelle génération mélange manga, comics et outils numériques."
+    },
+    {
+      "kind": "brief",
+      "image": "https://images.unsplash.com/photo-1680226312080-c3f9beff02ca?w=2400&q=85",
+      "kicker": "PRATIQUE",
+      "headline": "COMMENT\nY ALLER ?",
+      "problem": "50 ans de BD gabonaise, de la presse au manga",
+      "clear": "IFG, Galerie M & Mezzanine. Gratuit, tout décembre",
+      "voice": "L'expo est à l'Institut français, Galerie M et Mezzanine. L'accès est gratuit, et tu as tout le mois de décembre pour y aller !"
+    },
+    {
+      "kind": "cta",
+      "image": "https://images.unsplash.com/photo-1614107070261-2aa1304618f6?w=2400&q=85",
+      "kicker": "ABONNE-TOI",
+      "headline": "@241degres",
+      "sub": "Tu y vas ? Dis-le en commentaire !",
+      "voice": "Et toi, tu y vas ? Dis-le en commentaire, et abonne-toi pour ne rien rater de la culture au Gabon !"
+    }
+  ],
+  "sources": [
+    "Institut français du Gabon, page de l'événement « EXPOSITION : Histoires dessinées, 50 ans de la BD gabonaise » (du 20 novembre 2026 au 1er janvier 2027 selon le texte ; l'affiche indique le 31 janvier 2027), consultée le 28/11/2026 : https://institutfrancais-gabon.com/evenements/exposition-histoires-dessinees-50-ans-de-la-bd-gabonaise/"
+  ],
+  "credits": "Visuel de l'exposition : Institut français du Gabon (détail de l'affiche). Photos d'illustration : Unsplash (Lucas George Wendt, Oleg Shatilov, Shawn Rain, Jonathan Borba).",
+  "hashtags": "#Gabon #Libreville #241degres #CultureGabon #BDGabonaise #BandeDessinée #InstitutFrançais #pourtoi",
+  "cover_shot_scene": 1
+}

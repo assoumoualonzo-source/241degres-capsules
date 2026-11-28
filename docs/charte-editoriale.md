@@ -11,7 +11,7 @@ Démarche d'amélioration continue (PDCA) : chaque retour de Stéphane devient u
 1. **Pertinence de l'image** : à chaque scène, l'image montre ce dont parle la voix (la personne, le lieu, l'objet, l'événement). Quand on parle de quelqu'un, on le montre. Une photo d'article qui ne montre pas le sujet (conférence de presse, tribune, logo) n'est pas utilisée. Une photo générique n'est qu'un dernier recours, et alors elle doit représenter le sujet (un chœur pour un concert de chœur, une pompe à essence pour le carburant).
 2. **Photos d'articles** : autorisées et recherchées (og:image et photos du corps de l'article, téléchargées dans `shots/`, hors dépôt). Les questions de droits et de retrait sont gérées par Stéphane.
 3. **Source** : pas de bandeau « SOURCE ». Seulement quand l'image (ou la vidéo, ou la capture) vient d'un média : « Photo : Média · date » (« Source : … » pour un extrait vidéo) en très petit en haut à droite, et en bas à droite sur la vignette. Rien pour une photo Unsplash. La source complète va dans la légende et `post.txt`.
-4. **Vignette** : un sujet fort et lisible dans la grille du profil, avec l'image de la personne ou du sujet principal (champ `cover_shot_scene` pour les shorts ; pour la capsule INFO, l'image de l'info n°1 doit être parlante et lumineuse).
+4. **Vignette** : un sujet fort et lisible dans la grille du profil, avec l'image de la personne ou du sujet principal (champ `cover_shot_scene` pour les shorts ; pour la capsule INFO, l'image de l'info n°1, quelle qu'elle soit, doit être parlante et lumineuse).
 5. **4K et luminosité** : vidéo et vignette en 2160×3840 ; fonds lumineux, voiles légers ; photos Unsplash en grande taille (w=2400).
 6. **Lisibilité** : rien ne chevauche les sous-titres ni le texte ; vérifier les images de contrôle avant chaque rendu final.
 7. **Prononciation** (champ `voice`) : Mayumba = « Mayoumba » ; Ivindo, « in » comme dans « cuisine » ; sigles écrits comme ils se prononcent.
@@ -22,8 +22,9 @@ Le Gabonais moyen, pas un spécialiste. Si un élève de 3e ne comprend pas une 
 ## Capsule INFO — structure
 1. **hook** : étiquette « ACTU GABON », titre à l'écran « LES INFOS DU JOUR », voix : « Les infos du jour au Gabon. On t'explique. » (jamais « 5 infos chaudes » ni « en simple »).
 2. **5 scènes brief**, une par info : titre + carte POURQUOI ÇA COMPTE (rouge) + carte CONCRÈTEMENT (vert). Les étiquettes restent à l'écran mais ne sont pas lues : la voix raconte l'info sans dire « Pourquoi ça compte » ni « Concrètement ».
-   - **Info n°1 obligatoire : le chef de l'État** (activités, décisions, audiences, déplacements du président de la République). Ton factuel et neutre : ce qu'il a fait ou décidé, ce que ça change pour les gens. Pas d'éloge ni de critique de notre part.
-   - Infos 2 à 5 : les plus « chaudes » des dernières 24 à 48 h (celles dont tout le monde parle, qui touchent le quotidien).
+   - **Une info sur le chef de l'État chaque jour, à une place qui varie** (depuis le 28/11/2026) : activités, décisions, audiences, déplacements du président de la République. Ton factuel et neutre : ce qu'il a fait ou décidé, ce que ça change pour les gens. Pas d'éloge ni de critique de notre part. Pour ne pas donner l'image d'un média partisan, elle n'est **pas** systématiquement en premier (voir « Sélection des 5 infos »).
+   - Les autres infos : les plus « chaudes » des dernières 24 à 48 h (celles dont tout le monde parle, qui touchent le quotidien).
+   - Étiquette (`kicker`) et voix par thème, pas par personne : « 3 · INDUSTRIE », « Troisième info, l'industrie », plutôt que « CHEF DE L'ÉTAT » ou « Première info, le chef de l'État ».
 3. **civic** : un réflexe citoyen concret, lié à une des infos.
 4. **cta** : « Abonne-toi pour recevoir nos capsules d'informations chaque jour ! Et dis-nous en commentaire ce que tu penses de ces actualités. »
 
@@ -66,8 +67,8 @@ On évite : faits divers sordides, rumeurs, sujets judiciaires en cours sans dé
 
 ## Sélection des 5 infos
 1. **Filtres éliminatoires** : vérifiée (deux médias différents ou source officielle), fraîche (24–48 h ou fait nouveau), sûre (pas de rumeur, pas de fait divers sordide, pas de mineurs, pas d'affaire judiciaire sans décision).
-2. **Place réservée** : info n°1 = chef de l'État.
-3. **Classement des autres** : impact au quotidien (portefeuille, santé, sécurité, logement, démarches) > nombre de personnes concernées > chaleur (reprise par plusieurs médias, débat sur les réseaux) > échéance proche > équilibre des thèmes (5 thèmes différents).
+2. **Info du chef de l'État** : toujours présente, mais classée comme les autres selon les critères ci-dessous, donc à une place qui change d'un jour à l'autre. Règles d'alternance : jamais à la même place deux jours de suite (regarder la capsule de la veille dans `episodes/*-info`), jamais en n°1 deux jours de suite, et au plus deux fois en n°1 sur sept jours. En n°1 seulement si c'est vraiment l'info qui touche le plus le quotidien des gens ce jour-là.
+3. **Classement** : impact au quotidien (portefeuille, santé, sécurité, logement, démarches) > nombre de personnes concernées > chaleur (reprise par plusieurs médias, débat sur les réseaux) > échéance proche > équilibre des thèmes (5 thèmes différents).
 
 ## Veille et vérification
 - Ratisser large chaque jour : L'Union (union.sonapresse.com), Gabon Media Time, Gabonreview, Info241, Gabonactu, Infos Gabon, AGP Gabon, Gabon 24, Direct Infos Gabon, allAfrica (Gabon), communiqués officiels (présidence, gouvernement).

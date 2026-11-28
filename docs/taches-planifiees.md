@@ -2,7 +2,7 @@
 
 ## INFO (tous les jours : lancement 17 h, capsule prête à 18 h, diffusion 19 h, heure de Libreville)
 1. Cloner le dépôt, lire `docs/charte-editoriale.md` et `docs/episode-schema.md`.
-2. Veille sur toutes les sources de la charte : 5 infos (n°1 = chef de l'État), chacune confirmée par deux médias.
+2. Veille sur toutes les sources de la charte : 5 infos dont une sur le chef de l'État, à une place qui varie (jamais la même que la veille, jamais n°1 deux jours de suite), chacune confirmée par deux médias.
 3. Pour chaque sujet : intérêt pour la population, intérêt pour l'État, réflexe citoyen.
 4. Images selon les « Principes communs » de la charte : pertinence (on montre la personne, le lieu ou l'objet dont on parle), photos d'articles dans `shots/` (`"image": "shots/NN.jpg"` et `"credit": "Photo : Média · JJ/MM/AAAA"`), sinon Unsplash lumineux et lié au sujet (w=2400). Rendu 4K automatique.
 5. Écrire `episodes/AAAA-MM-JJ-info/episode.json` (hook, 5 scènes brief, civic, cta ; voix clonée via voice_ref).
